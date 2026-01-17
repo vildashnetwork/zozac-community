@@ -67,7 +67,7 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container">
-        <div className="logo" onClick={()=> window.location.href = "/" }>
+        <div className="logo" onClick={() => window.location.href = "/"}>
           <img
             src={logo}
             alt="zozac logo"
@@ -86,7 +86,7 @@ const Navbar = () => {
           <li><a href="#use-cases">Information</a></li>
           <li><a href="#samples">Posts</a></li>
           <li><a href="#pricing">Report</a></li>
-          <li><Link to="/about">About</Link></li>
+          {/* <li><Link to="/about">About</Link></li> */}
           <li>
             <a href="tel:674274276" target="_blank" rel="noopener noreferrer">
               Contact

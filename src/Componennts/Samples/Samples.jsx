@@ -87,69 +87,70 @@ const Samples = () => {
             {loading && <BarLoader />}
             {!more
               ? imagepost.slice(0, 5).map((item, index) => (
-                  <div className="sample-card" key={index}>
-                    <div className="sample-image">
-                      <img src={item.ImageUrl} alt={item.title} />
-                    </div>
-                    <div className="sample-content">
-                      <h3>{item.title}</h3>
-                      <p>
-                        {expandedPics[index] || item.content.length <= 70
-                          ? item.content
-                          : item.content.slice(0, 70)}
-
-                        {item.content.length > 70 && (
-                          <span
-                            style={{ cursor: "pointer", color: "#333" }}
-                            onClick={() => togglePic(index)}
-                          >
-                            {expandedPics[index]
-                              ? " ..show less"
-                              : " ..read more"}
-                          </span>
-                        )}
-                      </p>
-
-                      <Link to={`/picturepost/${item._id}`}>
-                        <span className="btn-text">
-                          Read More <i className="fas fa-arrow-right"></i>
-                        </span>
-                      </Link>
-                    </div>
+                <div className="sample-card" key={index}>
+                  <div className="sample-image">
+                    <img src={item.ImageUrl} alt={item.title} />
                   </div>
-                ))
+                  <div className="sample-content">
+                    <h3>{item.title}</h3>
+                    <p>
+                      {expandedPics[index] || item.content.length <= 70
+                        ? item.content
+                        : item.content.slice(0, 70)}
+
+                      {item.content.length > 70 && (
+                        <span
+                          style={{ cursor: "pointer", color: "#333" }}
+                          onClick={() => togglePic(index)}
+                        >
+                          {expandedPics[index]
+                            ? " ..show less"
+                            : " ..read more"}
+                        </span>
+                      )}
+                    </p>
+
+                    <Link to={`/picturepost/${item._id}`}>
+                      <span className="btn-text">
+                        Read More <i className="fas fa-arrow-right"></i>
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              ))
               : imagepost.map((item, index) => (
-                  <div className="sample-card" key={index}>
-                    <div className="sample-image">
-                      <img src={item.ImageUrl} alt={item.title} />
-                    </div>
-                    <div className="sample-content">
-                      <h3>{item.title}</h3>
-                      <p>
-                        {expandedPics[index] || item.content.length <= 70
-                          ? item.content
-                          : item.content.slice(0, 70)}
-
-                        {item.content.length > 70 && (
-                          <span
-                            style={{ cursor: "pointer", color: "#333" }}
-                            onClick={() => togglePic(index)}
-                          >
-                            {expandedPics[index]
-                              ? " ..show less"
-                              : " ..read more"}
-                          </span>
-                        )}
-                      </p>
-
-                      <Link to={`/picturepost/${item._id}`}>
-                        <span className="btn-text">
-                          Read More <i className="fas fa-arrow-right"></i>
-                        </span>
-                      </Link>
-                    </div>
+                <div className="sample-card" key={index}>
+                  <div className="sample-image">
+                    <img src={item.ImageUrl} alt={item.title} />
                   </div>
-                ))}
+                  <div className="sample-content">
+                    <h3>{item.title}</h3>
+                    <p>
+                      {expandedPics[index] || item.content.length <= 70
+                        ? item.content
+                        : item.content.slice(0, 70)}
+
+                      {item.content.length > 70 && (
+                        <span
+                          style={{ cursor: "pointer", color: "#333" }}
+                          onClick={() => togglePic(index)}
+                        >
+                          {expandedPics[index]
+                            ? " ..show less"
+                            : " ..read more"}
+                        </span>
+                      )}
+                    </p>
+
+
+                    <span className="btn-text"
+                      onClick={() => window.location.href = `/picturepost/${item._id}`}>
+                      Read More <i className="fas fa-arrow-right"></i>
+                    </span>
+
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
       </section>
@@ -161,91 +162,91 @@ const Samples = () => {
             {loading && <BarLoader />}
             {!more
               ? videopost.slice(0, 5).map((item, index) => (
-                  <div className="sample-card" key={index}>
-                    <div>
-                      <video
-                        src={item.VidUrl}
-                        controls
-                        preload="metadata"
-                        style={{
-                          width: "100%",
-                          borderRadius: "10px",
-                          backgroundColor: "#000",
-                          outline: "none",
-                        }}
-                        onContextMenu={(e) => e.preventDefault()}
-                      ></video>
-                    </div>
-                    <div className="sample-content">
-                      <h3>{item.title}</h3>
-                      <p>
-                        {expandedVideos[index] || item.content.length <= 70
-                          ? item.content
-                          : item.content.slice(0, 70)}
-
-                        {item.content.length > 70 && (
-                          <span
-                            style={{ cursor: "pointer", color: "#333" }}
-                            onClick={() => toggleVideo(index)}
-                          >
-                            {expandedVideos[index]
-                              ? " ..show less"
-                              : " ..read more"}
-                          </span>
-                        )}
-                      </p>
-
-                      <Link to={`/posts/${item._id}`}>
-                        <span className="btn-text">
-                          Read More <i className="fas fa-arrow-right"></i>
-                        </span>
-                      </Link>
-                    </div>
+                <div className="sample-card" key={index}>
+                  <div>
+                    <video
+                      src={item.VidUrl}
+                      controls
+                      preload="metadata"
+                      style={{
+                        width: "100%",
+                        borderRadius: "10px",
+                        backgroundColor: "#000",
+                        outline: "none",
+                      }}
+                      onContextMenu={(e) => e.preventDefault()}
+                    ></video>
                   </div>
-                ))
+                  <div className="sample-content">
+                    <h3>{item.title}</h3>
+                    <p>
+                      {expandedVideos[index] || item.content.length <= 70
+                        ? item.content
+                        : item.content.slice(0, 70)}
+
+                      {item.content.length > 70 && (
+                        <span
+                          style={{ cursor: "pointer", color: "#333" }}
+                          onClick={() => toggleVideo(index)}
+                        >
+                          {expandedVideos[index]
+                            ? " ..show less"
+                            : " ..read more"}
+                        </span>
+                      )}
+                    </p>
+
+
+                    <span className="btn-text" onClick={() => window.location.href = `/posts/${item._id}`}>
+                      Read More <i className="fas fa-arrow-right"></i>
+                    </span>
+
+                  </div>
+                </div>
+              ))
               : videopost.map((item, index) => (
-                  <div className="sample-card" key={index}>
-                    <div>
-                      <video
-                        src={item.VidUrl}
-                        controls
-                        preload="metadata"
-                        style={{
-                          width: "100%",
-                          borderRadius: "10px",
-                          backgroundColor: "#000",
-                          outline: "none",
-                        }}
-                        onContextMenu={(e) => e.preventDefault()}
-                      ></video>
-                    </div>
-                    <div className="sample-content">
-                      <h3>{item.title}</h3>
-                      <p>
-                        {expandedVideos[index] || item.content.length <= 70
-                          ? item.content
-                          : item.content.slice(0, 70)}
-
-                        {item.content.length > 70 && (
-                          <span
-                            style={{ cursor: "pointer", color: "#333" }}
-                            onClick={() => toggleVideo(index)}
-                          >
-                            {expandedVideos[index]
-                              ? " ..show less"
-                              : " ..read more"}
-                          </span>
-                        )}
-                      </p>
-
-                      <Link to={`/posts/${item._id}`}>
-                        <span className="btn-text">
-                          Read More <i className="fas fa-arrow-right"></i>
-                        </span>
-                      </Link>
-                    </div>
+                <div className="sample-card" key={index}>
+                  <div>
+                    <video
+                      src={item.VidUrl}
+                      controls
+                      preload="metadata"
+                      style={{
+                        width: "100%",
+                        borderRadius: "10px",
+                        backgroundColor: "#000",
+                        outline: "none",
+                      }}
+                      onContextMenu={(e) => e.preventDefault()}
+                    ></video>
                   </div>
-                ))}
+                  <div className="sample-content">
+                    <h3>{item.title}</h3>
+                    <p>
+                      {expandedVideos[index] || item.content.length <= 70
+                        ? item.content
+                        : item.content.slice(0, 70)}
+
+                      {item.content.length > 70 && (
+                        <span
+                          style={{ cursor: "pointer", color: "#333" }}
+                          onClick={() => toggleVideo(index)}
+                        >
+                          {expandedVideos[index]
+                            ? " ..show less"
+                            : " ..read more"}
+                        </span>
+                      )}
+                    </p>
+
+                    <Link to={`/posts/${item._id}`}>
+                      <span className="btn-text">
+                        Read More <i className="fas fa-arrow-right"></i>
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
 

@@ -634,33 +634,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import React, { useState } from "react";
 // import img1 from "../../assets/WhatsApp Image 2025-07-04 at 10.09.35_3aa4d729.jpg";
 // import img2 from "../../assets/WhatsApp Image 2025-07-04 at 10.09.30_441aaa22.jpg";
@@ -707,6 +680,7 @@
 //     border: "none",
 //     cursor: "pointer",
 //     borderRadius: "5px",
+//     marginBottom: "30px",
 //   };
 
 //   const listStyle = {
@@ -717,91 +691,91 @@
 
 //   const listItemStyle = {
 //     marginBottom: "12px",
-//     paddingLeft: "20px",
+//     paddingLeft: "30px",
 //     position: "relative",
-//   };
-
-//   const listItemBullet = {
-//     content: '"\\f058"',
-//     fontFamily: "Font Awesome 5 Free",
-//     fontWeight: 900,
-//     position: "absolute",
-//     left: 0,
-//     top: 0,
-//     color: "#2d5b1a",
 //   };
 
 //   return (
 //     <>
-//       <section style={sectionStyle}>
+//       <section className="apple" style={sectionStyle}>
 //         {/* Text Column */}
-//         <div style={columnStyle}>
-//           <div>
-//             <span style={{ color: "#2d5b1a", fontWeight: 500 }}>About ZOZAC</span>
-//             <h2 style={titleStyle}>About ZOZAC Community</h2>
-//             <div style={textStyle}>
-//               At ZOZAC Community, we are a dynamic NGO empowering leaders and
-//               promoting community development. We create opportunities for growth
-//               and positive impact in communities.
-//             </div>
-//             <button style={buttonStyle} onClick={() => setOpen(!open)}>
-//               {open ? "Show Less" : "Read More"}
-//             </button>
+//         <div className="kiwi" style={columnStyle}>
+//           <div className="pear">
+//             <div className="orange">
+//               <span className="mango" style={{ color: "#2d5b1a", fontWeight: 500 }}>
+//                 About ZOZAC
+//               </span>
+//               <h2 style={titleStyle}>About ZOZAC Community</h2>
 
-//             {open && (
-//               <ul style={listStyle}>
-//                 <li style={listItemStyle}>
-//                   <strong>Education:</strong> Providing quality education and
-//                   personal growth opportunities.
-//                 </li>
-//                 <li style={listItemStyle}>
-//                   <strong>Peace Building:</strong> Promoting inclusivity and
-//                   community cohesion.
-//                 </li>
-//                 <li style={listItemStyle}>
-//                   <strong>Youth Empowerment:</strong> Supporting young people
-//                   in acquiring skills and being self-sustainable.
-//                 </li>
-//                 <li style={listItemStyle}>
-//                   <strong>Humanitarian Aid:</strong> Providing support to
-//                   vulnerable communities, including long-term development.
-//                 </li>
-//                 <li style={listItemStyle}>
-//                   <strong>Social Cohesion:</strong> Building strong, inclusive,
-//                   resilient communities.
-//                 </li>
-//                 <li style={listItemStyle}>
-//                   <strong>Community Development:</strong> Fostering sustainable
-//                   development and improving quality of life.
-//                 </li>
-//                 <li style={listItemStyle}>
-//                   <strong>Environmental Preservation:</strong> Promoting
-//                   sustainable practices and mitigating climate change.
-//                 </li>
+//               <div className="text" style={textStyle}>
+//                 At ZOZAC Community, we are a dynamic non-governmental, non-profit civil society organization
+//                 dedicated to empowering the next generation of leaders and creating a brighter future for all.
+//                 Our focus is to empower leaders, support community development, and promote positive change.
+//                 Our mission is built on the belief that every individual has the potential to make a difference,
+//                 while we strive to create opportunities for growth, development, and positive impact in our
+//                 communities through areas like:
+//               </div>
+
+//               <button style={buttonStyle} onClick={() => setOpen(!open)}>
+//                 {open ? "Show Less" : "Read More"}
+//               </button>
+
+//               {open && (
+//                 <ul className="grape" style={listStyle}>
+//                   <li style={listItemStyle}><strong>Education:</strong> Providing quality education and personal growth opportunities to empower individuals and communities.</li>
+//                   <li style={listItemStyle}><strong>Peace Building:</strong> Promoting inclusivity and community cohesion through initiatives that promote understanding, tolerance, and mutual respect.</li>
+//                   <li style={listItemStyle}><strong>Youth Empowerment:</strong> Supporting young people in acquiring skills and being self-sustainable with opportunities that enable them to contribute to their communities.</li>
+//                   <li style={listItemStyle}><strong>Humanitarian Aid:</strong> Providing support to vulnerable individuals and communities in need, including emergency relief and long-term development programs.</li>
+//                   <li style={listItemStyle}><strong>Social Cohesion:</strong> Building strong, inclusive, and resilient communities by promoting a sense of belonging, trust, and cooperation among community members.</li>
+//                   <li style={listItemStyle}><strong>Community Development:</strong> Fostering sustainable development and improving the quality of life for communities through initiatives that promote economic growth, social justice, and community empowerment.</li>
+//                   <li style={listItemStyle}><strong>Environmental Preservation:</strong> Protecting and conserving the natural environment, promoting sustainable practices and mitigating the impact of climate change.</li>
+//                   <li style={listItemStyle}><strong>Our Story:</strong> ZOZAC Community was founded by Afuh Alfred Ngum, a visionary leader who overcame incredible adversity to drive positive change. Witnessing the struggles of vulnerable youths and the lack of opportunities for education, sustainable skills, and employment, he decided to take action starting in 2009 by opening a free recording studio, movie production house and a stage where young talents can showcase their talents as a young leader. In 2020 he founded ZOZAC and in 2022 registered ZOZAC Community. The name "ZOZAC" is derived from our founder-created language, meaning "Togetherness Is Strength," reflecting the belief that collective efforts are essential for creating lasting impact and driving positive change.</li>
+//                   <li style={listItemStyle}><strong>Our Registration:</strong> ZOZAC Community is legally registered under the Cameroon government with headquarters in Tiko sub-division, Fako division, South West Region, Cameroon. Compliance with Article 7 of Law No <span style={{ color: "green" }}>90/054 of 19/12/1990</span>, Registration No: <span style={{ color: "green" }}>1165/G.37/C84/VOLI/SAAJP</span>. Demonstrates commitment to transparency, accountability, and good governance. We aim to inspire positive change, promote education, peace building, social cohesion, community development, youth empowerment initiatives, and empower leaders to drive progress within Cameroon, Africa, and beyond.</li>
+//                 </ul>
+//               )}
+
+//               <h2 style={titleStyle}>Mission & Vision</h2>
+//               <div className="text" style={textStyle}>
+//                 <p><strong style={{ color: "green" }}>Mission:</strong> Empower individuals with self-awareness, discipline, and the willpower to lead themselves and others towards a positive destination built on trust.</p>
+//                 <p><strong style={{ color: "green" }}>Vision:</strong> Be the leading force transforming, educating, and empowering individuals, groups, and communities with knowledge to prepare for tomorrow and the next generation.</p>
+//                 <p><strong style={{ color: "green" }}>Motto:</strong> Creating innovative leaders for a better tomorrow.</p>
+//                 <p><strong style={{ color: "green" }}>Slogan:</strong> Togetherness is strength.</p>
+//                 <p><strong style={{ color: "green" }}>Goal:</strong> Create a sustainable model for community development that will be replicated in other regions.</p>
+//               </div>
+
+//               <ul className="grape" style={listStyle}>
+//                 <h2>What We Do</h2>
+//                 <li style={listItemStyle}><strong>Our core purpose:</strong> Empowering leaders, promoting community development, and positive change through education, peace building, youth empowerment, humanitarian aid, and environmental preservation, driven by collective efforts and commitment to a common goal, creating a brighter future for all starting from grassroots communities.</li>
+//                 <li style={listItemStyle}><strong>Programs:</strong> We are dedicated to making a positive impact in the lives of individuals and communities through diverse flagship programs designed to empower leaders, foster community development, and promote positive change.</li>
+//                 <li style={listItemStyle}><strong>Ropauni Peace Guards Initiative:</strong> Promoting community peace and conflict resolution through training, mediation, and engagement. <strong>Objectives:</strong> Train community peace ambassadors, mediate conflicts, promote peace education and awareness.</li>
+//                 <li style={listItemStyle}><strong>ZOZAC Food Program:</strong> Provides food assistance and nutrition support to vulnerable individuals and communities. <strong>Objectives:</strong> Provide food aid, support sustainable agriculture, promote nutrition education, reduce food insecurity.</li>
+//                 <li style={listItemStyle}><strong>Go To School:</strong> Supports education and increases access to quality learning. <strong>Objectives:</strong> Provide resources, support teacher development, promote literacy, increase access for marginalized groups.</li>
+//                 <li style={listItemStyle}><strong>Keypoint Awards:</strong> Recognize and celebrate community leaders and innovators. <strong>Objectives:</strong> Recognize contributions, celebrate creativity, inspire action, foster excellence.</li>
+//                 <li style={listItemStyle}><strong>ZOZAC Health Center:</strong> Delivers healthcare services and promotes well-being. <strong>Objectives:</strong> Provide first aids, promote health education, support disease prevention, improve health outcomes.</li>
+//                 <li style={listItemStyle}><strong>ZOZAC Women Network:</strong> Empowers women and promotes gender equality. <strong>Objectives:</strong> Support economic empowerment, provide training, foster women leaders. Slogan: Women on the frontline of change.</li>
+//                 <li style={listItemStyle}><strong>ACFLO:</strong> African Congress For Local Organizations strengthens local organizations for community development. <strong>Objectives:</strong> Networking, capacity-building, knowledge sharing, partnerships.</li>
+//                 <li style={listItemStyle}><strong>ZOZAC Institute:</strong> Offers training, research, and capacity-building initiatives. <strong>Objectives:</strong> Training, research, knowledge sharing, promoting excellence.</li>
+//                 <li style={listItemStyle}><strong>ZOZAC Pitch Show:</strong> Showcases innovative ideas and supports entrepreneurship. <strong>Objectives:</strong> Provide platform for pitching, support innovation, facilitate networking, promote entrepreneurship.</li>
+//                 <li style={listItemStyle}><strong>ZOZAC Youth Fellowship Program:</strong> Supports youth development, leadership, and mentorship. <strong>Objectives:</strong> Training, youth leadership, entrepreneurship, and community of young leaders.</li>
 //               </ul>
-//             )}
-//           </div>
 
-//           <h2 style={titleStyle}>Mission & Vision</h2>
-//           <div style={textStyle}>
-//             <strong style={{ color: "green" }}>Mission:</strong> Empower
-//             individuals to lead themselves and others positively.
-//             <br />
-//             <strong style={{ color: "green" }}>Vision:</strong> Transform and
-//             empower communities with knowledge for future generations.
-//             <br />
-//             <strong style={{ color: "green" }}>Motto:</strong> Creating
-//             innovative leaders for a better tomorrow.
-//             <br />
-//             <strong style={{ color: "green" }}>Slogan:</strong> Togetherness
-//             is strength.
+//               <div className="lemon">
+//                 <a href="tel:674274276" className="pineapple" style={{ background: "#2d5b1a" }}>Contact Us</a>
+//               </div>
+//             </div>
 //           </div>
 //         </div>
 
 //         {/* Image Column */}
-//         <div style={columnStyle}>
-//           <img src={img1} alt="About 1" style={{ width: "100%", marginBottom: "20px" }} />
-//           <img src={img2} alt="About 2" style={{ width: "100%" }} />
+//         <div className="watermelon" style={columnStyle}>
+//           <div className="plum">
+//             <figure className="cherry">
+//               <img src={img1} alt="About 1" className="img" />
+//             </figure>
+//             <figure className="blueberry">
+//               <img src={img2} alt="About 2" className="img" />
+//             </figure>
+//           </div>
 //         </div>
 //       </section>
 
@@ -811,9 +785,6 @@
 // };
 
 // export default About;
-
-
-
 
 
 
@@ -868,12 +839,24 @@ const About = () => {
     marginBottom: "30px",
   };
 
-  const titleStyle = {
-    fontSize: "40px",
+  const headingStyle = {
+    display: "flex",
+    alignItems: "center",
+    background: "#2d5b1a",
+    color: "#fff",
+    padding: "10px 15px",
+    borderRadius: "5px",
+    marginBottom: "20px",
+    fontSize: "22px",
     fontWeight: 600,
-    color: "#222",
-    paddingBottom: "18px",
-    position: "relative",
+  };
+
+  const tickStyle = {
+    display: "inline-block",
+    marginRight: "10px",
+    fontWeight: "bold",
+    fontSize: "20px",
+    color: "#00ff00", // bright green tick
   };
 
   const buttonStyle = {
@@ -909,7 +892,11 @@ const About = () => {
               <span className="mango" style={{ color: "#2d5b1a", fontWeight: 500 }}>
                 About ZOZAC
               </span>
-              <h2 style={titleStyle}>About ZOZAC Community</h2>
+
+              <div style={headingStyle}>
+                <span style={tickStyle}>✔</span>
+                About ZOZAC Community
+              </div>
 
               <div className="text" style={textStyle}>
                 At ZOZAC Community, we are a dynamic non-governmental, non-profit civil society organization
@@ -938,7 +925,10 @@ const About = () => {
                 </ul>
               )}
 
-              <h2 style={titleStyle}>Mission & Vision</h2>
+              <div style={headingStyle}>
+                <span style={tickStyle}>✔</span>
+                Mission & Vision
+              </div>
               <div className="text" style={textStyle}>
                 <p><strong style={{ color: "green" }}>Mission:</strong> Empower individuals with self-awareness, discipline, and the willpower to lead themselves and others towards a positive destination built on trust.</p>
                 <p><strong style={{ color: "green" }}>Vision:</strong> Be the leading force transforming, educating, and empowering individuals, groups, and communities with knowledge to prepare for tomorrow and the next generation.</p>
@@ -947,20 +937,23 @@ const About = () => {
                 <p><strong style={{ color: "green" }}>Goal:</strong> Create a sustainable model for community development that will be replicated in other regions.</p>
               </div>
 
+              <div style={headingStyle}>
+                <span style={tickStyle}>✔</span>
+                What We Do
+              </div>
               <ul className="grape" style={listStyle}>
-                <h2>What We Do</h2>
-                <li style={listItemStyle}><strong>Our core purpose:</strong> Empowering leaders, promoting community development, and positive change through education, peace building, youth empowerment, humanitarian aid, and environmental preservation, driven by collective efforts and commitment to a common goal, creating a brighter future for all starting from grassroots communities.</li>
-                <li style={listItemStyle}><strong>Programs:</strong> We are dedicated to making a positive impact in the lives of individuals and communities through diverse flagship programs designed to empower leaders, foster community development, and promote positive change.</li>
-                <li style={listItemStyle}><strong>Ropauni Peace Guards Initiative:</strong> Promoting community peace and conflict resolution through training, mediation, and engagement. <strong>Objectives:</strong> Train community peace ambassadors, mediate conflicts, promote peace education and awareness.</li>
-                <li style={listItemStyle}><strong>ZOZAC Food Program:</strong> Provides food assistance and nutrition support to vulnerable individuals and communities. <strong>Objectives:</strong> Provide food aid, support sustainable agriculture, promote nutrition education, reduce food insecurity.</li>
-                <li style={listItemStyle}><strong>Go To School:</strong> Supports education and increases access to quality learning. <strong>Objectives:</strong> Provide resources, support teacher development, promote literacy, increase access for marginalized groups.</li>
-                <li style={listItemStyle}><strong>Keypoint Awards:</strong> Recognize and celebrate community leaders and innovators. <strong>Objectives:</strong> Recognize contributions, celebrate creativity, inspire action, foster excellence.</li>
-                <li style={listItemStyle}><strong>ZOZAC Health Center:</strong> Delivers healthcare services and promotes well-being. <strong>Objectives:</strong> Provide first aids, promote health education, support disease prevention, improve health outcomes.</li>
-                <li style={listItemStyle}><strong>ZOZAC Women Network:</strong> Empowers women and promotes gender equality. <strong>Objectives:</strong> Support economic empowerment, provide training, foster women leaders. Slogan: Women on the frontline of change.</li>
-                <li style={listItemStyle}><strong>ACFLO:</strong> African Congress For Local Organizations strengthens local organizations for community development. <strong>Objectives:</strong> Networking, capacity-building, knowledge sharing, partnerships.</li>
-                <li style={listItemStyle}><strong>ZOZAC Institute:</strong> Offers training, research, and capacity-building initiatives. <strong>Objectives:</strong> Training, research, knowledge sharing, promoting excellence.</li>
-                <li style={listItemStyle}><strong>ZOZAC Pitch Show:</strong> Showcases innovative ideas and supports entrepreneurship. <strong>Objectives:</strong> Provide platform for pitching, support innovation, facilitate networking, promote entrepreneurship.</li>
-                <li style={listItemStyle}><strong>ZOZAC Youth Fellowship Program:</strong> Supports youth development, leadership, and mentorship. <strong>Objectives:</strong> Training, youth leadership, entrepreneurship, and community of young leaders.</li>
+                <li style={listItemStyle}><strong>Our core purpose:</strong> Empowering leaders, promoting community development, and positive change through education, peace building, youth empowerment, humanitarian aid, and environmental preservation.</li>
+                <li style={listItemStyle}><strong>Programs:</strong> Diverse flagship programs designed to empower leaders, foster community development, and promote positive change.</li>
+                <li style={listItemStyle}><strong>Ropauni Peace Guards Initiative:</strong> Promoting community peace and conflict resolution. <strong>Objectives:</strong> Train ambassadors, mediate conflicts, promote peace education.</li>
+                <li style={listItemStyle}><strong>ZOZAC Food Program:</strong> Provides food assistance and nutrition support. <strong>Objectives:</strong> Provide food aid, support agriculture, promote nutrition education, reduce food insecurity.</li>
+                <li style={listItemStyle}><strong>Go To School:</strong> Supports education access. <strong>Objectives:</strong> Provide resources, support teachers, promote literacy, increase access.</li>
+                <li style={listItemStyle}><strong>Keypoint Awards:</strong> Recognize community leaders and innovators. <strong>Objectives:</strong> Recognize contributions, celebrate creativity, inspire action.</li>
+                <li style={listItemStyle}><strong>ZOZAC Health Center:</strong> Delivers healthcare services. <strong>Objectives:</strong> First aid, health education, disease prevention, improve outcomes.</li>
+                <li style={listItemStyle}><strong>ZOZAC Women Network:</strong> Empowers women. <strong>Objectives:</strong> Support economic empowerment, provide training, foster leaders. Slogan: Women on the frontline of change.</li>
+                <li style={listItemStyle}><strong>ACFLO:</strong> Collaboration for local organizations. <strong>Objectives:</strong> Networking, capacity-building, knowledge sharing, partnerships.</li>
+                <li style={listItemStyle}><strong>ZOZAC Institute:</strong> Training, research, and skill building. <strong>Objectives:</strong> Training, research, knowledge sharing, excellence.</li>
+                <li style={listItemStyle}><strong>ZOZAC Pitch Show:</strong> Showcases ideas and supports entrepreneurship. <strong>Objectives:</strong> Pitch platform, innovation support, networking, entrepreneurship.</li>
+                <li style={listItemStyle}><strong>ZOZAC Youth Fellowship Program:</strong> Youth development, leadership, mentorship. <strong>Objectives:</strong> Training, youth leadership, entrepreneurship, young leaders community.</li>
               </ul>
 
               <div className="lemon">

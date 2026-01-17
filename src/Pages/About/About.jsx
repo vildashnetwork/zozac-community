@@ -11,6 +11,7 @@ const About = () => {
   const [open, setopen] = useState(false);
   return (
     <>
+
       <section className="apple">
         <div className="banana2">
           {/* Text Column */}

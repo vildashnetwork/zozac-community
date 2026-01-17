@@ -144,7 +144,13 @@ const Samples = () => {
 
 
                     <span className="btn-text"
-                      onClick={() => window.location.href = `/picturepost/${item._id}`}>
+
+                      onClick={() => {
+                        window.scrollTo({ top: 0, behavior: "smooth" }); // scroll to top
+                        window.location.href = `/picturepost/${item._id}`;
+                      }}
+
+                    >
                       Read More <i className="fas fa-arrow-right"></i>
                     </span>
 
@@ -197,7 +203,13 @@ const Samples = () => {
                     </p>
 
 
-                    <span className="btn-text" onClick={() => window.location.href = `/posts/${item._id}`}>
+                    <span className="btn-text"
+
+                      onClick={() => {
+                        window.scrollTo({ top: 0, behavior: "smooth" }); // scroll to top
+                        window.location.href = `/posts/${item._id}`;
+                      }}
+                    >
                       Read More <i className="fas fa-arrow-right"></i>
                     </span>
 
@@ -239,11 +251,16 @@ const Samples = () => {
                       )}
                     </p>
 
-                    <Link to={`/posts/${item._id}`}>
-                      <span className="btn-text">
-                        Read More <i className="fas fa-arrow-right"></i>
-                      </span>
-                    </Link>
+
+                    <span className="btn-text"
+
+                      onClick={() => {
+                        window.scrollTo({ top: 0, behavior: "smooth" }); // scroll to top
+                        window.location.href = `/posts/${item._id}`;
+                      }}>
+                      Read More <i className="fas fa-arrow-right"></i>
+                    </span>
+
                   </div>
                 </div>
               ))}

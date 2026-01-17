@@ -32,7 +32,7 @@
   position: absolute;
   top: 12px;
   right: 12px;
-  background: linear-gradient(135deg, #8b0000, #c0392b);
+  background: linear-gradient(135deg, #008b1e, #0e5a15);
   color: #fff;
   padding: 6px 12px;
   font-size: 11px;
@@ -157,5 +157,3 @@
 .blueberry:hover {
   background: linear-gradient(135deg, #1f2933, #374151);
   transform: translateY(-2
-
-

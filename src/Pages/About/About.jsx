@@ -525,102 +525,283 @@
 
 
 
-import React, { useState } from 'react';
-import img1 from '../../assets/WhatsApp Image 2025-07-04 at 10.09.35_3aa4d729.jpg';
-import img2 from '../../assets/WhatsApp Image 2025-07-04 at 10.09.30_441aaa22.jpg';
-import Team from '../../Componennts/Team/Team';
-import './About.css';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useState } from "react";
+import img1 from "../../assets/WhatsApp Image 2025-07-04 at 10.09.35_3aa4d729.jpg";
+import img2 from "../../assets/WhatsApp Image 2025-07-04 at 10.09.30_441aaa22.jpg";
+import Team from "../../Componennts/Team/Team";
 
 const About = () => {
   const [open, setOpen] = useState(false);
 
+  const sectionStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    maxWidth: "1400px",
+    margin: "90px auto",
+    padding: "0 30px",
+    gap: "60px",
+    justifyContent: "space-between",
+  };
+
+  const columnStyle = {
+    flex: "1 1 45%",
+    minWidth: "300px",
+  };
+
+  const textStyle = {
+    fontSize: "16px",
+    lineHeight: "26px",
+    color: "#848484",
+    marginBottom: "30px",
+  };
+
+  const titleStyle = {
+    fontSize: "40px",
+    fontWeight: 600,
+    color: "#222",
+    paddingBottom: "18px",
+    position: "relative",
+  };
+
+  const buttonStyle = {
+    width: "100%",
+    padding: "12px",
+    background: "green",
+    color: "#fff",
+    border: "none",
+    cursor: "pointer",
+    borderRadius: "5px",
+  };
+
+  const listStyle = {
+    listStyle: "none",
+    padding: 0,
+    margin: "20px 0",
+  };
+
+  const listItemStyle = {
+    marginBottom: "12px",
+    paddingLeft: "20px",
+    position: "relative",
+  };
+
+  const listItemBullet = {
+    content: '"\\f058"',
+    fontFamily: "Font Awesome 5 Free",
+    fontWeight: 900,
+    position: "absolute",
+    left: 0,
+    top: 0,
+    color: "#2d5b1a",
+  };
+
   return (
     <>
-      <section className="apple">
-        <div className="banana2">
-          {/* Text Column */}
-          <div className="kiwi">
-            <div className="pear">
-              <div className="orange">
-                <span className="mango">About ZOZAC</span>
-                <h2>About ZOZAC Community</h2>
-
-                <div className="text">
-                  At ZOZAC Community, we are a dynamic non-governmental, non-profit civil society organization
-                  dedicated to empowering the next generation of leaders and creating a brighter future for all.
-                  Our focus is to empower leaders, support community development, and promote positive change.
-                  Our mission is built on the belief that every individual has the potential to make a difference,
-                  while we strive to create opportunities for growth, development, and positive impact in our
-                  communities through areas like:
-                </div>
-
-                <button
-                  className="hover"
-                  style={{ width: '100%', padding: '12px', background: 'green', color: '#fff', border: 'none', outline: 'none' }}
-                  onClick={() => setOpen(!open)}
-                >
-                  {open ? 'Show Less' : 'Read More'}
-                </button>
-
-                {open && (
-                  <ul className="grape">
-                    <li>
-                      <strong>Education:</strong> Providing quality education and personal growth opportunities to empower individuals and communities.
-                    </li>
-                    <li>
-                      <strong>Peace Building:</strong> Promoting inclusivity and community cohesion through initiatives that promote understanding, tolerance, and mutual respect.
-                    </li>
-                    <li>
-                      <strong>Youth Empowerment:</strong> Supporting young people in acquiring skills and being self-sustainable with opportunities that enable them to contribute to their communities.
-                    </li>
-                    <li>
-                      <strong>Humanitarian Aid:</strong> Providing support to vulnerable individuals and communities in need, including emergency relief and long-term development programs.
-                    </li>
-                    <li>
-                      <strong>Social Cohesion:</strong> Building strong, inclusive, and resilient communities by promoting a sense of belonging, trust, and cooperation among community members.
-                    </li>
-                    <li>
-                      <strong>Community Development:</strong> Fostering sustainable development and improving the quality of life for communities through initiatives that promote economic growth, social justice, and community empowerment.
-                    </li>
-                    <li>
-                      <strong>Environmental Preservation:</strong> Protecting and conserving the natural environment, promoting sustainable practices and mitigating the impact of climate change.
-                    </li>
-                    <li>
-                      <strong>Our Story:</strong> ZOZAC Community was founded by Afuh Alfred Ngum, a visionary leader who overcame incredible adversity to drive positive change. Witnessing the struggles of vulnerable youths and the lack of opportunities for education, sustainable skills, and employment, he decided to take action starting in 2009 by opening a free recording studio, movie production house, and a stage where young talents can showcase their talents. In 2020, he founded ZOZAC and in 2022 registered ZOZAC Community. The name "ZOZAC" is derived from our founder-created language, meaning "Togetherness Is Strength," reflecting the belief that collective efforts are essential for creating lasting impact.
-                    </li>
-                    <li>
-                      <strong>Our Registration:</strong> ZOZAC Community is legally registered under the Cameroon government, headquartered in Tiko sub-division, Fako division, South West Region, Cameroon. Registration No: <span style={{ color: 'green' }}>1165/G.37/C84/VOLI/SAAJP</span>. Compliance with Article 7 of Law No <span style={{ color: 'green' }}>90/054 of 19/12/1990</span>.
-                    </li>
-                  </ul>
-                )}
-
-                <h2>Mission & Vision</h2>
-                <div className="text">
-                  <p><strong style={{ color: 'green' }}>Mission:</strong> Empower individuals with self-awareness, discipline, and the willpower to lead themselves and others towards a positive destination built on trust.</p>
-                  <p><strong style={{ color: 'green' }}>Vision:</strong> Be the leading force transforming, educating, and empowering individuals, groups, and communities with knowledge to prepare for tomorrow and the next generation.</p>
-                  <p><strong style={{ color: 'green' }}>Motto:</strong> Creating innovative leaders for a better tomorrow.</p>
-                  <p><strong style={{ color: 'green' }}>Slogan:</strong> Togetherness is strength.</p>
-                  <p><strong style={{ color: 'green' }}>Goal:</strong> Create a sustainable model for community development that can be replicated in other regions.</p>
-                </div>
-
-                <div className="lemon">
-                  <a href="tel:674274276" className="pineapple">Contact Us</a>
-                </div>
-              </div>
+      <section style={sectionStyle}>
+        {/* Text Column */}
+        <div style={columnStyle}>
+          <div>
+            <span style={{ color: "#2d5b1a", fontWeight: 500 }}>About ZOZAC</span>
+            <h2 style={titleStyle}>About ZOZAC Community</h2>
+            <div style={textStyle}>
+              At ZOZAC Community, we are a dynamic NGO empowering leaders and
+              promoting community development. We create opportunities for growth
+              and positive impact in communities.
             </div>
+            <button style={buttonStyle} onClick={() => setOpen(!open)}>
+              {open ? "Show Less" : "Read More"}
+            </button>
+
+            {open && (
+              <ul style={listStyle}>
+                <li style={listItemStyle}>
+                  <strong>Education:</strong> Providing quality education and
+                  personal growth opportunities.
+                </li>
+                <li style={listItemStyle}>
+                  <strong>Peace Building:</strong> Promoting inclusivity and
+                  community cohesion.
+                </li>
+                <li style={listItemStyle}>
+                  <strong>Youth Empowerment:</strong> Supporting young people
+                  in acquiring skills and being self-sustainable.
+                </li>
+                <li style={listItemStyle}>
+                  <strong>Humanitarian Aid:</strong> Providing support to
+                  vulnerable communities, including long-term development.
+                </li>
+                <li style={listItemStyle}>
+                  <strong>Social Cohesion:</strong> Building strong, inclusive,
+                  resilient communities.
+                </li>
+                <li style={listItemStyle}>
+                  <strong>Community Development:</strong> Fostering sustainable
+                  development and improving quality of life.
+                </li>
+                <li style={listItemStyle}>
+                  <strong>Environmental Preservation:</strong> Promoting
+                  sustainable practices and mitigating climate change.
+                </li>
+              </ul>
+            )}
           </div>
 
-          {/* Image Column */}
-          <div className="watermelon">
-            <div className="plum">
-              <figure className="cherry">
-                <img src={img1} alt="About 1" className="img" />
-              </figure>
-              <figure className="blueberry">
-                <img src={img2} alt="About 2" className="img" />
-              </figure>
-            </div>
+          <h2 style={titleStyle}>Mission & Vision</h2>
+          <div style={textStyle}>
+            <strong style={{ color: "green" }}>Mission:</strong> Empower
+            individuals to lead themselves and others positively.
+            <br />
+            <strong style={{ color: "green" }}>Vision:</strong> Transform and
+            empower communities with knowledge for future generations.
+            <br />
+            <strong style={{ color: "green" }}>Motto:</strong> Creating
+            innovative leaders for a better tomorrow.
+            <br />
+            <strong style={{ color: "green" }}>Slogan:</strong> Togetherness
+            is strength.
           </div>
+        </div>
+
+        {/* Image Column */}
+        <div style={columnStyle}>
+          <img src={img1} alt="About 1" style={{ width: "100%", marginBottom: "20px" }} />
+          <img src={img2} alt="About 2" style={{ width: "100%" }} />
         </div>
       </section>
 
@@ -630,289 +811,3 @@ const About = () => {
 };
 
 export default About;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useState } from "react";
-// import img1 from "../../assets/WhatsApp Image 2025-07-04 at 10.09.35_3aa4d729.jpg";
-// import img2 from "../../assets/WhatsApp Image 2025-07-04 at 10.09.30_441aaa22.jpg";
-// import Team from "../../Componennts/Team/Team";
-
-// const About = () => {
-//   const [open, setOpen] = useState(false);
-
-//   const sectionStyle = {
-//     display: "flex",
-//     flexWrap: "wrap",
-//     maxWidth: "1400px",
-//     margin: "90px auto",
-//     padding: "0 30px",
-//     gap: "60px",
-//     justifyContent: "space-between",
-//   };
-
-//   const columnStyle = {
-//     flex: "1 1 45%",
-//     minWidth: "300px",
-//   };
-
-//   const textStyle = {
-//     fontSize: "16px",
-//     lineHeight: "26px",
-//     color: "#848484",
-//     marginBottom: "30px",
-//   };
-
-//   const titleStyle = {
-//     fontSize: "40px",
-//     fontWeight: 600,
-//     color: "#222",
-//     paddingBottom: "18px",
-//     position: "relative",
-//   };
-
-//   const buttonStyle = {
-//     width: "100%",
-//     padding: "12px",
-//     background: "green",
-//     color: "#fff",
-//     border: "none",
-//     cursor: "pointer",
-//     borderRadius: "5px",
-//   };
-
-//   const listStyle = {
-//     listStyle: "none",
-//     padding: 0,
-//     margin: "20px 0",
-//   };
-
-//   const listItemStyle = {
-//     marginBottom: "12px",
-//     paddingLeft: "20px",
-//     position: "relative",
-//   };
-
-//   const listItemBullet = {
-//     content: '"\\f058"',
-//     fontFamily: "Font Awesome 5 Free",
-//     fontWeight: 900,
-//     position: "absolute",
-//     left: 0,
-//     top: 0,
-//     color: "#2d5b1a",
-//   };
-
-//   return (
-//     <>
-//       <section style={sectionStyle}>
-//         {/* Text Column */}
-//         <div style={columnStyle}>
-//           <div>
-//             <span style={{ color: "#2d5b1a", fontWeight: 500 }}>About ZOZAC</span>
-//             <h2 style={titleStyle}>About ZOZAC Community</h2>
-//             <div style={textStyle}>
-//               At ZOZAC Community, we are a dynamic NGO empowering leaders and
-//               promoting community development. We create opportunities for growth
-//               and positive impact in communities.
-//             </div>
-//             <button style={buttonStyle} onClick={() => setOpen(!open)}>
-//               {open ? "Show Less" : "Read More"}
-//             </button>
-
-//             {open && (
-//               <ul style={listStyle}>
-//                 <li style={listItemStyle}>
-//                   <strong>Education:</strong> Providing quality education and
-//                   personal growth opportunities.
-//                 </li>
-//                 <li style={listItemStyle}>
-//                   <strong>Peace Building:</strong> Promoting inclusivity and
-//                   community cohesion.
-//                 </li>
-//                 <li style={listItemStyle}>
-//                   <strong>Youth Empowerment:</strong> Supporting young people
-//                   in acquiring skills and being self-sustainable.
-//                 </li>
-//                 <li style={listItemStyle}>
-//                   <strong>Humanitarian Aid:</strong> Providing support to
-//                   vulnerable communities, including long-term development.
-//                 </li>
-//                 <li style={listItemStyle}>
-//                   <strong>Social Cohesion:</strong> Building strong, inclusive,
-//                   resilient communities.
-//                 </li>
-//                 <li style={listItemStyle}>
-//                   <strong>Community Development:</strong> Fostering sustainable
-//                   development and improving quality of life.
-//                 </li>
-//                 <li style={listItemStyle}>
-//                   <strong>Environmental Preservation:</strong> Promoting
-//                   sustainable practices and mitigating climate change.
-//                 </li>
-//               </ul>
-//             )}
-//           </div>
-
-//           <h2 style={titleStyle}>Mission & Vision</h2>
-//           <div style={textStyle}>
-//             <strong style={{ color: "green" }}>Mission:</strong> Empower
-//             individuals to lead themselves and others positively.
-//             <br />
-//             <strong style={{ color: "green" }}>Vision:</strong> Transform and
-//             empower communities with knowledge for future generations.
-//             <br />
-//             <strong style={{ color: "green" }}>Motto:</strong> Creating
-//             innovative leaders for a better tomorrow.
-//             <br />
-//             <strong style={{ color: "green" }}>Slogan:</strong> Togetherness
-//             is strength.
-//           </div>
-//         </div>
-
-//         {/* Image Column */}
-//         <div style={columnStyle}>
-//           <img src={img1} alt="About 1" style={{ width: "100%", marginBottom: "20px" }} />
-//           <img src={img2} alt="About 2" style={{ width: "100%" }} />
-//         </div>
-//       </section>
-
-//       <Team />
-//     </>
-//   );
-// };
-
-// export default About;

@@ -863,8 +863,9 @@ const About = () => {
     width: "100%",
     padding: "12px",
     background: "green",
-    color: "#fff",
+    outline: "none",
     border: "none",
+    color: "#fff",
     cursor: "pointer",
     borderRadius: "5px",
     marginBottom: "30px",
@@ -880,6 +881,9 @@ const About = () => {
     marginBottom: "12px",
     paddingLeft: "30px",
     position: "relative",
+    fontFamily: "sans-serif",
+    color: "#333",
+    fontSize: "19px"
   };
 
   return (
@@ -913,15 +917,15 @@ const About = () => {
 
               {open && (
                 <ul className="grape" style={listStyle}>
-                  <li style={listItemStyle}><strong>Education:</strong> Providing quality education and personal growth opportunities to empower individuals and communities.</li>
-                  <li style={listItemStyle}><strong>Peace Building:</strong> Promoting inclusivity and community cohesion through initiatives that promote understanding, tolerance, and mutual respect.</li>
-                  <li style={listItemStyle}><strong>Youth Empowerment:</strong> Supporting young people in acquiring skills and being self-sustainable with opportunities that enable them to contribute to their communities.</li>
-                  <li style={listItemStyle}><strong>Humanitarian Aid:</strong> Providing support to vulnerable individuals and communities in need, including emergency relief and long-term development programs.</li>
-                  <li style={listItemStyle}><strong>Social Cohesion:</strong> Building strong, inclusive, and resilient communities by promoting a sense of belonging, trust, and cooperation among community members.</li>
-                  <li style={listItemStyle}><strong>Community Development:</strong> Fostering sustainable development and improving the quality of life for communities through initiatives that promote economic growth, social justice, and community empowerment.</li>
-                  <li style={listItemStyle}><strong>Environmental Preservation:</strong> Protecting and conserving the natural environment, promoting sustainable practices and mitigating the impact of climate change.</li>
-                  <li style={listItemStyle}><strong>Our Story:</strong> ZOZAC Community was founded by Afuh Alfred Ngum, a visionary leader who overcame incredible adversity to drive positive change. Witnessing the struggles of vulnerable youths and the lack of opportunities for education, sustainable skills, and employment, he decided to take action starting in 2009 by opening a free recording studio, movie production house and a stage where young talents can showcase their talents as a young leader. In 2020 he founded ZOZAC and in 2022 registered ZOZAC Community. The name "ZOZAC" is derived from our founder-created language, meaning "Togetherness Is Strength," reflecting the belief that collective efforts are essential for creating lasting impact and driving positive change.</li>
-                  <li style={listItemStyle}><strong>Our Registration:</strong> ZOZAC Community is legally registered under the Cameroon government with headquarters in Tiko sub-division, Fako division, South West Region, Cameroon. Compliance with Article 7 of Law No <span style={{ color: "green" }}>90/054 of 19/12/1990</span>, Registration No: <span style={{ color: "green" }}>1165/G.37/C84/VOLI/SAAJP</span>. Demonstrates commitment to transparency, accountability, and good governance. We aim to inspire positive change, promote education, peace building, social cohesion, community development, youth empowerment initiatives, and empower leaders to drive progress within Cameroon, Africa, and beyond.</li>
+                  <li style={listItemStyle}><strong style={{ color: "green" }}> Education:</strong><br /> <br />  Providing quality education and personal growth opportunities to empower individuals and communities.</li>
+                  <li style={listItemStyle}><strong style={{ color: "green" }}> Peace Building:</strong><br /> <br />  Promoting inclusivity and community cohesion through initiatives that promote understanding, tolerance, and mutual respect.</li>
+                  <li style={listItemStyle}><strong style={{ color: "green" }}> Youth Empowerment:</strong> <br /> <br /> Supporting young people in acquiring skills and being self-sustainable with opportunities that enable them to contribute to their communities.</li>
+                  <li style={listItemStyle}><strong style={{ color: "green" }}> Humanitarian Aid:</strong> <br /> <br /> Providing support to vulnerable individuals and communities in need, including emergency relief and long-term development programs.</li>
+                  <li style={listItemStyle}><strong style={{ color: "green" }}> Social Cohesion:</strong><br /> <br />  Building strong, inclusive, and resilient communities by promoting a sense of belonging, trust, and cooperation among community members.</li>
+                  <li style={listItemStyle}><strong style={{ color: "green" }}> Community Development:</strong><br /> <br />  Fostering sustainable development and improving the quality of life for communities through initiatives that promote economic growth, social justice, and community empowerment.</li>
+                  <li style={listItemStyle}><strong style={{ color: "green" }}> Environmental Preservation:</strong> <br /> <br /> Protecting and conserving the natural environment, promoting sustainable practices and mitigating the impact of climate change.</li>
+                  <li style={listItemStyle}><strong style={{ color: "green" }}> Our Story:</strong> <br /> <br /> ZOZAC Community was founded by Afuh Alfred Ngum, a visionary leader who overcame incredible adversity to drive positive change. Witnessing the struggles of vulnerable youths and the lack of opportunities for education, sustainable skills, and employment, he decided to take action starting in 2009 by opening a free recording studio, movie production house and a stage where young talents can showcase their talents as a young leader. In 2020 he founded ZOZAC and in 2022 registered ZOZAC Community. The name "ZOZAC" is derived from our founder-created language, meaning "Togetherness Is Strength," reflecting the belief that collective efforts are essential for creating lasting impact and driving positive change.</li>
+                  <li style={listItemStyle}><strong style={{ color: "green" }}> Our Registration:</strong><br /> <br />  ZOZAC Community is legally registered under the Cameroon government with headquarters in Tiko sub-division, Fako division, South West Region, Cameroon. Compliance with Article 7 of Law No <span style={{ color: "green" }}>90/054 of 19/12/1990</span>, Registration No: <span style={{ color: "green" }}>1165/G.37/C84/VOLI/SAAJP</span>. Demonstrates commitment to transparency, accountability, and good governance. We aim to inspire positive change, promote education, peace building, social cohesion, community development, youth empowerment initiatives, and empower leaders to drive progress within Cameroon, Africa, and beyond.</li>
                 </ul>
               )}
 
@@ -942,18 +946,18 @@ const About = () => {
                 What We Do
               </div>
               <ul className="grape" style={listStyle}>
-                <li style={listItemStyle}><strong>Our core purpose:</strong> Empowering leaders, promoting community development, and positive change through education, peace building, youth empowerment, humanitarian aid, and environmental preservation.</li>
-                <li style={listItemStyle}><strong>Programs:</strong> Diverse flagship programs designed to empower leaders, foster community development, and promote positive change.</li>
-                <li style={listItemStyle}><strong>Ropauni Peace Guards Initiative:</strong> Promoting community peace and conflict resolution. <strong>Objectives:</strong> Train ambassadors, mediate conflicts, promote peace education.</li>
-                <li style={listItemStyle}><strong>ZOZAC Food Program:</strong> Provides food assistance and nutrition support. <strong>Objectives:</strong> Provide food aid, support agriculture, promote nutrition education, reduce food insecurity.</li>
-                <li style={listItemStyle}><strong>Go To School:</strong> Supports education access. <strong>Objectives:</strong> Provide resources, support teachers, promote literacy, increase access.</li>
-                <li style={listItemStyle}><strong>Keypoint Awards:</strong> Recognize community leaders and innovators. <strong>Objectives:</strong> Recognize contributions, celebrate creativity, inspire action.</li>
-                <li style={listItemStyle}><strong>ZOZAC Health Center:</strong> Delivers healthcare services. <strong>Objectives:</strong> First aid, health education, disease prevention, improve outcomes.</li>
-                <li style={listItemStyle}><strong>ZOZAC Women Network:</strong> Empowers women. <strong>Objectives:</strong> Support economic empowerment, provide training, foster leaders. Slogan: Women on the frontline of change.</li>
-                <li style={listItemStyle}><strong>ACFLO:</strong> Collaboration for local organizations. <strong>Objectives:</strong> Networking, capacity-building, knowledge sharing, partnerships.</li>
-                <li style={listItemStyle}><strong>ZOZAC Institute:</strong> Training, research, and skill building. <strong>Objectives:</strong> Training, research, knowledge sharing, excellence.</li>
-                <li style={listItemStyle}><strong>ZOZAC Pitch Show:</strong> Showcases ideas and supports entrepreneurship. <strong>Objectives:</strong> Pitch platform, innovation support, networking, entrepreneurship.</li>
-                <li style={listItemStyle}><strong>ZOZAC Youth Fellowship Program:</strong> Youth development, leadership, mentorship. <strong>Objectives:</strong> Training, youth leadership, entrepreneurship, young leaders community.</li>
+                <li style={listItemStyle}><strong style={{ color: "green" }}>Our core purpose:</strong> <br /> <br /> Empowering leaders, promoting community development, and positive change through education, peace building, youth empowerment, humanitarian aid, and environmental preservation.</li>
+                <li style={listItemStyle}><strong style={{ color: "green" }}>Programs:</strong>  <br /> <br />Diverse flagship programs designed to empower leaders, foster community development, and promote positive change.</li>
+                <li style={listItemStyle}><strong style={{ color: "green" }}>Ropauni Peace Guards Initiative:</strong> <br /> <br /> Promoting community peace and conflict resolution. <strong>Objectives:</strong> Train ambassadors, mediate conflicts, promote peace education.</li>
+                <li style={listItemStyle}><strong style={{ color: "green" }}>ZOZAC Food Program:</strong> <br /> <br /> Provides food assistance and nutrition support. <strong>Objectives:</strong> Provide food aid, support agriculture, promote nutrition education, reduce food insecurity.</li>
+                <li style={listItemStyle}><strong style={{ color: "green" }}>Go To School:</strong> <br /> <br /> Supports education access. <strong>Objectives:</strong> Provide resources, support teachers, promote literacy, increase access.</li>
+                <li style={listItemStyle}><strong style={{ color: "green" }}>Keypoint Awards:</strong> <br /> <br /> Recognize community leaders and innovators. <strong>Objectives:</strong> Recognize contributions, celebrate creativity, inspire action.</li>
+                <li style={listItemStyle}><strong style={{ color: "green" }}>ZOZAC Health Center:</strong> <br /> <br /> Delivers healthcare services. <strong>Objectives:</strong> First aid, health education, disease prevention, improve outcomes.</li>
+                <li style={listItemStyle}><strong style={{ color: "green" }}>ZOZAC Women Network:</strong> <br /> <br /> Empowers women. <strong>Objectives:</strong> Support economic empowerment, provide training, foster leaders. Slogan: Women on the frontline of change.</li>
+                <li style={listItemStyle}><strong style={{ color: "green" }}>ACFLO:</strong>  <br /> <br />Collaboration for local organizations. <strong>Objectives:</strong> Networking, capacity-building, knowledge sharing, partnerships.</li>
+                <li style={listItemStyle}><strong style={{ color: "green" }}>ZOZAC Institute:</strong> <br /> <br /> Training, research, and skill building. <strong>Objectives:</strong> Training, research, knowledge sharing, excellence.</li>
+                <li style={listItemStyle}><strong style={{ color: "green" }}>ZOZAC Pitch Show:</strong>  <br /> <br />Showcases ideas and supports entrepreneurship. <strong>Objectives:</strong> Pitch platform, innovation support, networking, entrepreneurship.</li>
+                <li style={listItemStyle}><strong style={{ color: "green" }}>ZOZAC Youth Fellowship Program:</strong> <br /> <br /> Youth development, leadership, mentorship. <strong>Objectives:</strong> Training, youth leadership, entrepreneurship, young leaders community.</li>
               </ul>
 
               <div className="lemon">

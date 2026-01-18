@@ -833,10 +833,17 @@ const About = () => {
   };
 
   const textStyle = {
-    fontSize: "16px",
-    lineHeight: "26px",
-    color: "#848484",
+    // fontSize: "16px",
+    // lineHeight: "26px",
+    // color: "#848484",
     marginBottom: "30px",
+
+    //  marginBottom: "12px",
+    paddingLeft: "30px",
+    position: "relative",
+    fontFamily: "sans-serif",
+    color: "#333",
+    fontSize: "20px"
   };
 
   const headingStyle = {
@@ -886,6 +893,15 @@ const About = () => {
     fontSize: "19px"
   };
 
+  const other = {
+    marginBottom: "12px",
+    paddingLeft: "30px",
+    position: "relative",
+    fontFamily: "sans-serif",
+    color: "#333",
+    fontSize: "20px"
+  }
+
   return (
     <>
       <section className="apple" style={sectionStyle}>
@@ -934,11 +950,13 @@ const About = () => {
                 Mission & Vision
               </div>
               <div className="text" style={textStyle}>
-                <p><strong style={{ color: "green" }}>Mission:</strong> Empower individuals with self-awareness, discipline, and the willpower to lead themselves and others towards a positive destination built on trust.</p>
-                <p><strong style={{ color: "green" }}>Vision:</strong> Be the leading force transforming, educating, and empowering individuals, groups, and communities with knowledge to prepare for tomorrow and the next generation.</p>
-                <p><strong style={{ color: "green" }}>Motto:</strong> Creating innovative leaders for a better tomorrow.</p>
-                <p><strong style={{ color: "green" }}>Slogan:</strong> Togetherness is strength.</p>
-                <p><strong style={{ color: "green" }}>Goal:</strong> Create a sustainable model for community development that will be replicated in other regions.</p>
+                <p style={other}><strong style={{ color: "green" }}>Mission:</strong>  <br /> <br />  Empowering communities, enreaching lifes.
+                  together we build future through education, peace and collective action</p>
+                <p style={other}><strong style={{ color: "green" }}>Vision:</strong> <br /> <br /> having a world were communities thrive, empowered by knowledge driven by compassion
+                  and united in purpose, creating a sustainable and balance future for all.</p>
+                <p style={other}><strong style={{ color: "green" }}>Motto:</strong> <br /> <br />  Creating innovative leaders for a better tomorrow.</p>
+                <p style={other}><strong style={{ color: "green" }}>Slogan:</strong> <br /> <br />  Togetherness is strength.</p>
+                <p style={other}><strong style={{ color: "green" }}>Goal:</strong>  <br /> <br /> Create a sustainable model for community development that will be replicated in other regions.</p>
               </div>
 
               <div style={headingStyle}>

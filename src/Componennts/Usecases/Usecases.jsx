@@ -39,7 +39,9 @@ const useCasesData = [
   {
     id: 'Our Approach',
     title: 'Our Approach',
-    description: `We work closely with individuals, communities, organizations, and stakeholders to design and implement programs that meet their unique needs. And our approach is centered on inclusivity, participation, and sustainability`,
+    description: `We work closely with individuals, communities, organizations,
+     and stakeholders to design and implement programs that meet their unique needs.
+      And our approach is centered on inclusivity, participation, and sustainability`,
 
     points: [
 

@@ -1,49 +1,49 @@
 import React, { useState } from 'react';
 import './Usecase.css';
 import img1 from '../../assets/WhatsApp Image 2025-07-04 at 10.09.29_8f52353b.jpg'
-import img2 from'../../assets/WhatsApp Image 2025-07-04 at 10.09.32_59085943.jpg'
+import img2 from '../../assets/WhatsApp Image 2025-07-04 at 10.09.32_59085943.jpg'
 import img3 from '../../assets/WhatsApp Image 2025-07-04 at 10.09.40_474fb199.jpg'
 
 // The data for all use cases
 const useCasesData = [
-//   {
-//     id: 'introduction',
-//     title: 'What We Do',
-//     description: `Education: Provide scholarships and promote quality education for kids and youths.
-// Capacity Building: Organize conferences, seminars, and workshops to educate, transform, and empower.
-// Programs for Peace and Unity: Host sports competitions like "Canini Nitata" to promote peace, unity, and community development, train what we call "Peace Guards" to be peace diplomats and advocates. 
-// Skill Development: Offer training sessions to help youths develop their talents and skills.
-// Environmental Conservation: Plant trees and promote eco-friendly environments.
-// Humanitarian Works: Engage in volunteering, humanitarian works, and promote agriculture and culture.
-//        At ZOZAC Community, we believe in the power of togetherness. Let's work together to create a better tomorrow for all.`,
-//     points: [
-//       'surviving comunities',
-     
-//     ],
-//     imgSrc:img1,
-//     imgAlt: 'ZOZAC',
-//   },
+  //   {
+  //     id: 'introduction',
+  //     title: 'What We Do',
+  //     description: `Education: Provide scholarships and promote quality education for kids and youths.
+  // Capacity Building: Organize conferences, seminars, and workshops to educate, transform, and empower.
+  // Programs for Peace and Unity: Host sports competitions like "Canini Nitata" to promote peace, unity, and community development, train what we call "Peace Guards" to be peace diplomats and advocates. 
+  // Skill Development: Offer training sessions to help youths develop their talents and skills.
+  // Environmental Conservation: Plant trees and promote eco-friendly environments.
+  // Humanitarian Works: Engage in volunteering, humanitarian works, and promote agriculture and culture.
+  //        At ZOZAC Community, we believe in the power of togetherness. Let's work together to create a better tomorrow for all.`,
+  //     points: [
+  //       'surviving comunities',
+
+  //     ],
+  //     imgSrc:img1,
+  //     imgAlt: 'ZOZAC',
+  //   },
   {
     id: 'Our Mission',
     title: 'Our Mission',
-    description: `Empower individuals with self-awareness, discipline, and the willpower to lead 
-    themselves and others towards a positive destination built on trust.`,
-       
+    description: `Empowering communities, enreaching lifes.
+     together we build future through education, peace and collective action`,
+
     points: [
-   
-    
+
+
     ],
     imgSrc: img2,
     imgAlt: 'ZOZAC',
   },
-       {
+  {
     id: 'Our Approach',
     title: 'Our Approach',
     description: `We work closely with individuals, communities, organizations, and stakeholders to design and implement programs that meet their unique needs. And our approach is centered on inclusivity, participation, and sustainability`,
-       
+
     points: [
-   
-    
+
+
     ],
     imgSrc: img2,
     imgAlt: 'ZOZAC',
@@ -51,16 +51,17 @@ const useCasesData = [
   {
     id: 'Our Vision',
     title: 'Our Vision',
-    description: `Be the leading force transforming, educating, and empowering individuals, groups, and communities with knowledge to prepare for tomorrow and the next generation. `,
+    description: `having a world were communities thrive, empowered by knowledge driven by compassion 
+    and united in purpose, creating a sustainable and balance future for all. `,
     points: [
-      
-      
-     
+
+
+
     ],
     imgSrc: img3,
     imgAlt: 'ZOZAC',
   },
- 
+
 ];
 
 const UseCases = () => {

@@ -1,103 +1,292 @@
-.navbar {
+/* ============================================================
+   SITE NAVBAR - advanced styles
+   Translucent blurred bar, brand lockup, animated underlines,
+   pill CTAs, avatar chip, mobile drawer. Classes prefixed with
+   `site-nav` / `nav-` to avoid production CSS collisions.
+   ============================================================ */
+
+.site-nav {
+  --nav-green: #1f542f;
+  --nav-deep: #123b25;
+  --nav-lime: #b8d58a;
+  --nav-ink: #183126;
+
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #fff;
   z-index: 1000;
   height: 80px;
+  background: rgba(255, 255, 255, 0.82);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(31, 84, 47, 0.08);
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.navbar .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.site-nav.scrolled {
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom-color: transparent;
+  box-shadow: 0 0.6rem 1.6rem rgba(18, 59, 37, 0.1);
+}
+
+.nav-shell {
+  max-width: 1280px;
   height: 100%;
-}
-
-.logo {
+  margin: 0 auto;
+  padding: 0 1.5rem;
   display: flex;
   align-items: center;
-  font-weight: 700;
-  color: var(--text-color);
+  justify-content: space-between;
+  gap: 1.5rem;
 }
 
-.logo i {
-  margin-right: 0.5rem;
-  font-size: 1.75rem;
-  color: var(--primary-color);
-}
-
-.nav-toggle {
-  display: none;
+/* ---------- BRAND ---------- */
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   cursor: pointer;
 }
 
-.nav-menu {
+.nav-brand img {
+  height: 46px;
+  width: 46px;
+  border-radius: 0.7rem;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0.3rem 0.8rem rgba(18, 59, 37, 0.18);
+}
+
+.nav-brand span {
+  color: var(--nav-ink);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+/* ---------- LINKS ---------- */
+.nav-links {
   display: flex;
   align-items: center;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.nav-menu li {
-  margin-left: 1.5rem;
+.nav-links a {
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 0.15rem;
+  color: #22332b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
 }
 
-.nav-menu a {
-  color: var(--text-color);
-  font-weight: 500;
-  transition: var(--transition);
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0.15rem;
+  right: 0.15rem;
+  bottom: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--nav-green), var(--nav-lime));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
 }
 
-.nav-menu a:hover,
-.nav-menu a.active {
-  color: var(--primary-color);
+.nav-links a:hover {
+  color: var(--nav-green);
 }
 
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+/* ---------- CTA BUTTONS ---------- */
+.nav-links .btn-login {
+  margin-left: 0.75rem;
+  padding: 0.55rem 1.05rem;
+  border: 1px solid rgba(31, 84, 47, 0.28);
+  border-radius: 999px;
+  color: var(--nav-green);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.nav-links .btn-login:hover {
+  background: rgba(31, 84, 47, 0.08);
+  border-color: var(--nav-green);
+  color: var(--nav-green);
+  text-decoration: none;
+}
+
+.nav-links .btn-primary {
+  margin-left: 0.35rem;
+  padding: 0.6rem 1.25rem;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--nav-green), var(--nav-deep));
+  color: #ffffff;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 0.5rem 1.1rem rgba(18, 59, 37, 0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.nav-links .btn-primary:hover {
+  background: linear-gradient(135deg, var(--nav-deep), #0b2818);
+  transform: translateY(-2px);
+  box-shadow: 0 0.8rem 1.5rem rgba(18, 59, 37, 0.28);
+}
+
+/* ---------- PROFILE CHIP ---------- */
+.nav-profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-left: 0.75rem;
+  padding: 0.28rem 0.9rem 0.28rem 0.32rem;
+  border: 1px solid rgba(31, 84, 47, 0.18);
+  border-radius: 999px;
+  background: rgba(31, 84, 47, 0.05);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.nav-profile:hover {
+  background: rgba(31, 84, 47, 0.1);
+  border-color: rgba(31, 84, 47, 0.32);
+}
+
+.nav-avatar {
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav-profile p {
+  margin: 0;
+  color: var(--nav-ink);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  max-width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------- BURGER ---------- */
+.nav-burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(31, 84, 47, 0.16);
+  border-radius: 0.6rem;
+  background: rgba(31, 84, 47, 0.06);
+  color: var(--nav-green);
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.nav-burger:hover {
+  background: rgba(31, 84, 47, 0.12);
+}
+
+/* ---------- MOBILE DRAWER ---------- */
+@media (max-width: 992px) {
+  .nav-burger {
+    display: inline-flex;
   }
 
-  .nav-menu {
+  .nav-links {
     position: fixed;
     top: 80px;
     left: 0;
-    width: 100%;
-    height: 0;
-    background-color: #fff;
+    right: 0;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 0;
+    max-height: 0;
+    padding: 0 1.5rem;
     overflow: hidden;
-    transition: var(--transition);
     opacity: 0;
     visibility: hidden;
-    box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.97);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(31, 84, 47, 0.1);
+    box-shadow: 0 1.2rem 2rem rgba(18, 59, 37, 0.12);
+    transition: max-height 0.35s ease, opacity 0.3s ease, visibility 0.3s ease;
   }
 
-  .nav-menu.active {
-    height: auto;
-    padding: 2rem;
+  .nav-links.open {
+    max-height: 560px;
+    padding: 0.8rem 1.5rem 1.4rem;
     opacity: 1;
     visibility: visible;
+    overflow-y: auto;
   }
 
-  .nav-menu li {
-    margin: 0 0 1rem;
+  .nav-links li {
     width: 100%;
   }
+
+  .nav-links li + li {
+    border-top: 1px solid rgba(31, 84, 47, 0.08);
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.95rem 0.1rem;
+    font-size: 0.82rem;
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  .nav-links .btn-login,
+  .nav-links .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.9rem 0;
+    width: 100%;
+  }
+
+  .nav-profile {
+    margin: 0.9rem 0;
+  }
 }
 
-.profile{
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-}
-.profildiv{
-  width: 200px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 7px;
-  padding: 17px;
-  align-items: center;
+@media (prefers-reduced-motion: reduce) {
+  .site-nav,
+  .nav-links,
+  .nav-links a,
+  .nav-links a::after,
+  .nav-links .btn-primary,
+  .nav-links .btn-login,
+  .nav-profile,
+  .nav-burger {
+    transition: none;
+  }
 }

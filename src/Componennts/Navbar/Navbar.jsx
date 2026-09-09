@@ -1,5 +1,3 @@
-// src/components/Navbar/Navbar.jsx
-
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
@@ -54,7 +52,7 @@ const Navbar = () => {
   // Close mobile menu on any nav link click
   useEffect(() => {
     const closeMenuOnClick = () => setMenuOpen(false);
-    const links = document.querySelectorAll('.nav-menu a');
+    const links = document.querySelectorAll('.nav-links a');
     links.forEach(link => link.addEventListener('click', closeMenuOnClick));
 
     return () => {
@@ -65,22 +63,18 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container">
-        <div className="logo" onClick={()=> window.location.href = "/" }>
-          <img
-            src={logo}
-            alt="zozac logo"
-            style={{ height: "60px", width: "60px" }}
-          />
-          <span>ZOZAC COMMUNITY</span>
+    <nav className={`site-nav ${scrolled ? 'scrolled' : ''}`}>
+      <div className="nav-shell">
+        <div className="nav-brand" onClick={() => window.location.href = "/"}>
+          <img src={logo} alt="zozac logo" />
+          <span>ZOZAC Community</span>
         </div>
 
-        <div className="nav-toggle" onClick={() => setMenuOpen(prev => !prev)}>
+        <div className="nav-burger" onClick={() => setMenuOpen(prev => !prev)}>
           <i className={`fas ${menuOpen ? 'fa-times' : 'fa-bars'}`}></i>
         </div>
 
-        <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
+        <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <li><Link to="/">Home</Link></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#use-cases">Information</a></li>
@@ -95,9 +89,9 @@ const Navbar = () => {
 
           {token && userdata ? (
             <li>
-              <Link to="/profile" className="profildiv">
+              <Link to="/profile" className="nav-profile">
                 <img
-                  className="profile"
+                  className="nav-avatar"
                   src={userdata.image || '/default-avatar.png'}
                   alt="profile"
                 />
@@ -113,7 +107,7 @@ const Navbar = () => {
           )}
 
           <li>
-            <Link to="/order" className="btn-primary" style={{ color: '#fff' }}>
+            <Link to="/order" className="btn-primary">
               Join
             </Link>
           </li>
@@ -124,5 +118,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './Footer.css';
 import { Link } from 'react-router-dom';
-import { WhatsappIcon } from "react-share"; // ✅ only need the icon
+import { WhatsappIcon } from "react-share";
 import logo from "/logo1.jpg";
+
 const Footer = () => {
   const [loagout, removelogout] = useState(false);
 
@@ -20,27 +21,34 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="footer">
+    <footer className="site-footer">
       <div className="container">
         <div className="footer-grid">
           {/* Brand */}
           <div className="footer-brand">
-            <div className="logo">
-               <img
-            src={logo}
-            alt="zozac logo"
-            style={{ height: "60px", width: "60px",padding: "16px"  }}
-          />
-              <span style={{padding: "16px"}}>ZOZAC Community</span>
+            <div className="footer-brand-logo">
+              <img src={logo} alt="zozac logo" />
+              <span>ZOZAC Community</span>
             </div>
             <p>
-              Creating Platforms for Dialogue, Unity, Collaboration, Youths Empowerment & Sustainable Skills for Community Development.
+              Creating Platforms for Dialogue, Unity, Collaboration, Youths
+              Empowerment & Sustainable Skills for Community Development.
             </p>
-            <div className="social-links">
-              <a href="https://cm.linkedin.com/in/zozac-community-94a547268" target="_blank" rel="noopener noreferrer">
+            <div className="footer-social">
+              <a
+                href="https://cm.linkedin.com/in/zozac-community-94a547268"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="https://www.facebook.com/zozaccommunity" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.facebook.com/zozaccommunity"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
                 <i className="fab fa-facebook"></i>
               </a>
             </div>
@@ -50,10 +58,8 @@ const Footer = () => {
           <div className="footer-links">
             <h4>Organization</h4>
             <ul>
-              <Link to={'/about'}>
-                <li><a href="https://pefscomsystem.com/about/">About Us</a></li>
-                <li><a href="#">Our Team</a></li>
-              </Link>
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/about">Our Team</Link></li>
             </ul>
           </div>
 
@@ -63,7 +69,7 @@ const Footer = () => {
             <ul>
               <li><a href="mailto:zozaccommunity@gmail.com">zozaccommunity@gmail.com</a></li>
               <li><a href="tel:+237674274276">+237 674274276</a></li>
-              <li><a href="#">Location: Tiko SW Region Cameroon P.O BOX 237 TIKO</a></li>
+              <li>Location: Tiko SW Region, Cameroon, P.O BOX 237 TIKO</li>
               {loagout && (
                 <li>
                   <button onClick={handlelogout} className="btn-primary">Logout</button>
@@ -85,55 +91,24 @@ const Footer = () => {
 
         {/* Bottom */}
         <div className="footer-bottom">
-          <div className="copyright">
+          <div className="footer-copyright">
             <p>&copy; {new Date().getFullYear()} ZOZAC COMMUNITY. All rights reserved.</p>
           </div>
         </div>
       </div>
 
-      {/* ✅ Fixed WhatsApp Floating Button */}
-      <div
-        style={{
-          position: "fixed",
-          bottom: "20px",
-          right: "20px",
-          zIndex: 9999,
-        }}
+      {/* Fixed WhatsApp floating button */}
+      <a
+        className="float-whatsapp"
+        href="https://wa.me/message/WYIXQMMFCXDVH1"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with us on WhatsApp"
       >
-        <a
-          href="https://wa.me/message/WYIXQMMFCXDVH1" // Direct WhatsApp chat link
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            background: "linear-gradient(135deg, #25D366, #128C7E)",
-            borderRadius: "50%",
-            width: "60px",
-            height: "60px",
-            boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
-            textDecoration: "none",
-            transition: "transform 0.3s ease, box-shadow 0.3s ease",
-          }}
-          onMouseOver={e => {
-            e.currentTarget.style.transform = "scale(1.1)";
-            e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.4)";
-          }}
-          onMouseOut={e => {
-            e.currentTarget.style.transform = "scale(1)";
-            e.currentTarget.style.boxShadow = "0 4px 15px rgba(0,0,0,0.3)";
-          }}
-        >
-          <WhatsappIcon size={32} round />
-        </a>
-      </div>
+        <WhatsappIcon size={32} round />
+      </a>
     </footer>
   );
 };
 
 export default Footer;
-
-
-
-

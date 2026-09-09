@@ -1,102 +1,190 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
-:root {
-  --br: 20px;
+/* ============================================================
+   TEAM SECTION - advanced styles
+   Single-column cards with square imagery, using the brand
+   green/lime palette and serif headings. All classes are
+   prefixed with `team-` to avoid production CSS collisions.
+   ============================================================ */
+
+.team {
+  --team-green: #1f542f;
+  --team-deep: #123b25;
+  --team-lime: #b8d58a;
+  --team-ink: #183126;
+  --team-muted: #64746a;
+
+  margin-top: 4.5rem;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-
-
-.body {
-  min-height: 100vh;
-  background: #f3f3f3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  padding: 20px;
-  font-family: "Montserrat", sans-serif;
-}
-
-.grape-container {
+.team-heading {
+  margin: 0 auto 2.4rem;
+  max-width: 44rem;
   text-align: center;
 }
 
-.banana-row {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  margin: 10px auto;
-  margin-bottom: 12px;
-  gap: 20px;
-}
-
-.mango-card {
-  width: 240px;
-  background: #fff;
-  padding: 15px;
-  border-radius: var(--br);
-  transition: 0.5s;
-}
-
-.mango-card:hover {
-  box-shadow: 0px 3px 10px 5px #e9e9e9;
-}
-
-.mango-card img {
-  max-width: 100%;
-  border-radius: 50%;
-  aspect-ratio: 1 / 1;
-  border: 4px solid var(--bc, #000);
-}
-
-.apple-title {
-  margin: 20px 0;
-}
-
-.mango-card p{
-    font-size: 13px !important;
-}
-.mango-card h2 {
-  margin: 15px 0 5px;
-  font-size: 17px !important;
-}
-
-.orange-role {
-  font-size: 80%;
-  color: #444;
-  margin-bottom: 20px;
-}
-
-.mango-card a {
-  background: var(--btn, #000);
-  color: #fff;
-  padding: 10px 15px;
-  width: 100%;
+.team-kicker {
   display: block;
-  border-radius: var(--br);
-  text-decoration: none;
-  margin-top: 15px;
+  margin-bottom: 0.65rem;
+  color: var(--team-green);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
-@media (max-width: 767px) {
-  .banana-row {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 10px;
+.team-kicker::before {
+  content: '';
+  display: inline-block;
+  width: 2.5rem;
+  height: 2px;
+  margin: 0 0.65rem 0.2rem 0;
+  background: var(--team-lime);
+}
+
+.team-title {
+  margin: 0 0 1rem;
+  color: var(--team-ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.team-intro {
+  margin: 0;
+  color: var(--team-muted);
+  font-size: 0.96rem;
+  line-height: 1.8;
+}
+
+/* ---------- SINGLE-COLUMN CARD LIST ---------- */
+.team-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 2.6rem;
+}
+
+.team-card {
+  width: 100%;
+  max-width: 420px;
+  overflow: hidden;
+  border: 1px solid rgba(31, 84, 47, 0.14);
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow:
+    0 1.4rem 3rem rgba(18, 59, 37, 0.12),
+    0 0.35rem 0.9rem rgba(18, 59, 37, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(31, 84, 47, 0.32);
+  box-shadow:
+    0 1.9rem 3.8rem rgba(18, 59, 37, 0.18),
+    0 0.5rem 1.1rem rgba(18, 59, 37, 0.08);
+}
+
+/* ---------- SQUARE IMAGE ---------- */
+.team-card-media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--team-deep);
+}
+
+.team-card-media::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  z-index: 1;
+  background: linear-gradient(90deg, var(--team-green), var(--team-lime));
+}
+
+.team-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: none;
+  border-radius: 0;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.team-card:hover .team-card-media img {
+  transform: scale(1.04);
+}
+
+/* ---------- BODY ---------- */
+.team-card-body {
+  padding: 1.35rem 1.4rem 1.55rem;
+  text-align: center;
+}
+
+.team-card-name {
+  margin: 0 0 0.55rem;
+  color: var(--team-ink);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.team-card-role {
+  margin: 0;
+  color: var(--team-muted);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+/* ---------- LOADING / EMPTY ---------- */
+.team-loading {
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 0;
+}
+
+.team-empty {
+  max-width: 34rem;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.team-empty p {
+  margin: 0;
+  color: var(--team-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+  .team {
+    margin-top: 3rem;
   }
 
-  .mango-card {
-    flex: 0 0 calc(50% - 20px);
-    max-width: calc(50% - 20px);
+  .team-card {
+    max-width: 100%;
   }
 }
 
-@media (max-width: 420px) {
-  .mango-card {
-    flex: 0 0 calc(100% - 20px);
-    max-width: calc(100% - 20px);
+@media (prefers-reduced-motion: reduce) {
+  .team-card,
+  .team-card-media img {
+    transition: none;
+  }
+
+  .team-card:hover {
+    transform: none;
+  }
+
+  .team-card:hover .team-card-media img {
+    transform: none;
   }
 }
-
-
-

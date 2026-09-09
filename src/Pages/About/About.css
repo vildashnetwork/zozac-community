@@ -1,16 +1,16 @@
-.img {
+.about-img {
   max-width: 100% !important;
   height: auto !important;
   display: block !important;
 }
 
-ul.grape {
+ul.about-list {
   list-style: none !important;
   padding: 0 !important;
   margin: 0 !important;
 }
 
-.banana2 {
+.about-container {
   /* max-width: 1200px; */
   margin-top: 90px !important;
   padding: 0 30px !important;
@@ -32,7 +32,7 @@ ul.grape {
 }
 
 /* 
-.banana2 {
+.about-container {
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
@@ -55,20 +55,20 @@ ul.grape {
 } */
 
 /* Text Column */
-.kiwi {
+.about-content-col {
   flex: 1 1 45% !important;
   min-width: 300px !important;
 }
 
-.pear {
+.about-copy {
   padding-left: 0 !important;
 }
 
-.orange {
+.about-body {
   margin-bottom: 45px !important;
 }
 
-.mango {
+.about-eyebrow {
   font-size: 18px !important;
   color: #2d5b1a !important;
   font-weight: 500 !important;
@@ -76,7 +76,7 @@ ul.grape {
   display: block !important;
 }
 
-.orange h2 {
+.about-body h2 {
   font-size: 40px !important;
   font-weight: 600 !important;
   color: #222 !important;
@@ -85,7 +85,7 @@ ul.grape {
   line-height: 1.3 !important;
 }
 
-.orange h2::before {
+.about-body h2::before {
   content: '' !important;
   position: absolute !important;
   bottom: 0 !important;
@@ -95,7 +95,7 @@ ul.grape {
   background: #d1d2d6 !important;
 }
 
-.text {
+.about-lead {
   font-size: 16px !important;
   line-height: 26px !important;
   color: #848484 !important;
@@ -103,7 +103,7 @@ ul.grape {
   margin-bottom: 30px !important;
 }
 
-.grape li {
+.about-list li {
   font-size: 16px !important;
   line-height: 26px !important;
   color: #222 !important;
@@ -112,7 +112,7 @@ ul.grape {
   margin-bottom: 12px !important;
 }
 
-.grape li::before {
+.about-list li::before {
   content: "\f058" !important;
   font-family: "Font Awesome 5 Free" !important;
   font-weight: 900 !important;
@@ -124,7 +124,7 @@ ul.grape {
 }
 
 /* Button */
-.pineapple {
+.about-cta-link {
   display: inline-block !important;
   padding: 12px 30px !important;
   background-color: #2d5b1a !important;
@@ -135,31 +135,31 @@ ul.grape {
   transition: background-color 0.3s ease !important;
 }
 
-.pineapple:hover {
+.about-cta-link:hover {
   background-color: #001e57 !important;
 }
 
 /* Image Column */
-.watermelon {
+.about-media-col {
   flex: 1 1 45% !important;
   min-width: 300px !important;
   position: relative !important;
 }
 
-.plum {
+.about-media {
   position: relative !important;
   padding-left: 0 !important;
   padding-bottom: 0 !important;
 }
 
-.cherry,
-.blueberry {
+.about-frame-main,
+.about-frame-overlap {
   position: relative !important;
   margin-bottom: 30px !important;
   box-shadow: 0 30px 50px rgba(8, 13, 62, 0.15) !important;
 }
 
-.apple {
+.about-hero {
   --about-green: #1f542f;
   --about-deep: #123b25;
   --about-lime: #b8d58a;
@@ -175,7 +175,7 @@ ul.grape {
     linear-gradient(135deg, #f7f8f1 0%, #eef3e9 100%);
 }
 
-.apple::before {
+.about-hero::before {
   content: '';
   position: absolute;
   z-index: -1;
@@ -188,26 +188,26 @@ ul.grape {
   box-shadow: 0 0 0 3rem rgba(31, 84, 47, 0.035), 0 0 0 7rem rgba(31, 84, 47, 0.025);
 }
 
-.banana2 {
+.about-container {
   align-items: center !important;
   max-width: 1240px !important;
   gap: clamp(3rem, 7vw, 7rem) !important;
 }
 
-.kiwi {
+.about-content-col {
   flex: 1 1 52% !important;
   min-width: min(100%, 22rem) !important;
 }
 
-.pear {
+.about-copy {
   max-width: 43rem;
 }
 
-.orange {
+.about-body {
   margin-bottom: 0 !important;
 }
 
-.mango {
+.about-eyebrow {
   display: inline-flex !important;
   align-items: center;
   gap: 0.65rem;
@@ -219,14 +219,14 @@ ul.grape {
   text-transform: uppercase;
 }
 
-.mango::before {
+.about-eyebrow::before {
   content: '';
   width: 2.5rem;
   height: 2px;
   background: var(--about-lime);
 }
 
-.orange h2 {
+.about-body h2 {
   max-width: 11ch;
   margin-bottom: 1.35rem;
   color: var(--about-ink) !important;
@@ -237,7 +237,7 @@ ul.grape {
   line-height: 0.98 !important;
 }
 
-.orange h2::before {
+.about-body h2::before {
   bottom: -0.35rem;
   width: 4.25rem;
   height: 0.25rem;
@@ -245,7 +245,7 @@ ul.grape {
   background: var(--about-lime) !important;
 }
 
-.text {
+.about-lead {
   max-width: 42rem;
   margin: 1.8rem 0 1.7rem !important;
   color: var(--about-muted) !important;
@@ -253,7 +253,7 @@ ul.grape {
   line-height: 1.85 !important;
 }
 
-.apple .hover {
+.about-hero .about-toggle {
   width: auto !important;
   min-width: 9.5rem;
   padding: 0.9rem 1.35rem !important;
@@ -267,14 +267,14 @@ ul.grape {
   transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
 
-.apple .hover:hover,
-.apple .hover:focus-visible {
+.about-hero .about-toggle:hover,
+.about-hero .about-toggle:focus-visible {
   background: var(--about-deep) !important;
   box-shadow: 0 1rem 1.7rem rgba(31, 84, 47, 0.24);
   transform: translateY(-2px);
 }
 
-.grape {
+.about-list {
   margin: 1.5rem 0 !important;
   padding: 1.6rem !important;
   border: 1px solid rgba(31, 84, 47, 0.12);
@@ -282,14 +282,14 @@ ul.grape {
   background: rgba(255, 255, 255, 0.62);
 }
 
-.grape li {
+.about-list li {
   padding-left: 1.7rem !important;
   color: var(--about-muted) !important;
   font-size: 0.95rem !important;
   line-height: 1.7 !important;
 }
 
-.grape li::before {
+.about-list li::before {
   content: '•' !important;
   top: -0.05rem;
   color: var(--about-lime) !important;
@@ -298,12 +298,12 @@ ul.grape {
   line-height: 1;
 }
 
-.grape li b {
+.about-list li b {
   color: var(--about-ink);
   font-weight: 750;
 }
 
-.grape>h1 {
+.about-list>h1 {
   margin: 0 0 1.35rem;
   color: var(--about-ink);
   font-family: Georgia, 'Times New Roman', serif;
@@ -311,7 +311,7 @@ ul.grape {
   font-weight: 400;
 }
 
-.orange>h2:not(:first-of-type) {
+.about-body>h2:not(:first-of-type) {
   max-width: none;
   margin-top: 4.5rem;
   padding-top: 1.25rem;
@@ -320,14 +320,14 @@ ul.grape {
   letter-spacing: -0.03em;
 }
 
-.orange>h2:not(:first-of-type)::before {
+.about-body>h2:not(:first-of-type)::before {
   top: -2px;
   bottom: auto;
   width: 2.5rem;
   height: 3px;
 }
 
-.orange .text p {
+.about-body .about-lead p {
   margin: 1.2rem 0 0.35rem;
   color: var(--about-green) !important;
   font-weight: 800;
@@ -335,35 +335,35 @@ ul.grape {
   text-transform: uppercase;
 }
 
-.lemon {
+.about-cta-row {
   margin-top: 2.2rem;
 }
 
-.pineapple {
+.about-cta-link {
   border-radius: 0.3rem !important;
   background: var(--about-deep) !important;
   padding: 0.9rem 1.5rem !important;
   box-shadow: 0 0.75rem 1.5rem rgba(31, 84, 47, 0.14);
 }
 
-.pineapple:hover,
-.pineapple:focus-visible {
+.about-cta-link:hover,
+.about-cta-link:focus-visible {
   background: #0b2818 !important;
   color: #fff !important;
   transform: translateY(-2px);
 }
 
-.watermelon {
+.about-media-col {
   flex: 1 1 40% !important;
   min-width: min(100%, 20rem) !important;
 }
 
-.plum {
+.about-media {
   min-height: 38rem;
   padding: 2.5rem 0 2.5rem 2.5rem !important;
 }
 
-.plum::before {
+.about-media::before {
   content: '';
   position: absolute;
   inset: 0 0 3rem 3rem;
@@ -371,8 +371,8 @@ ul.grape {
   border-radius: 0.5rem;
 }
 
-.cherry,
-.blueberry {
+.about-frame-main,
+.about-frame-overlap {
   z-index: 1;
   overflow: hidden;
   margin: 0 !important;
@@ -381,27 +381,27 @@ ul.grape {
   box-shadow: 0 1.5rem 3.5rem rgba(18, 59, 37, 0.18) !important;
 }
 
-.cherry {
+.about-frame-main {
   width: 78%;
   margin-left: auto !important;
 }
 
-.blueberry {
+.about-frame-overlap {
   position: absolute !important;
   right: 0;
   bottom: 0;
   width: 63%;
 }
 
-.cherry .img,
-.blueberry .img {
+.about-frame-main .about-img,
+.about-frame-overlap .about-img {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: 0 !important;
 }
 
-.blueberry .img {
+.about-frame-overlap .about-img {
   aspect-ratio: 5 / 6;
 }
 
@@ -429,7 +429,7 @@ ul.grape {
   box-shadow: 0 1.5rem 3.5rem rgba(18, 59, 37, 0.18);
 }
 
-.about-slide .img {
+.about-slide .about-img {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
@@ -488,39 +488,39 @@ ul.grape {
 }
 
 @media (min-width: 761px) {
-  .plum {
+  .about-media {
     min-height: 31rem;
   }
 
-  .about-slide .img {
+  .about-slide .about-img {
     aspect-ratio: 5 / 4;
   }
 }
 
 @media (max-width: 760px) {
-  .apple {
+  .about-hero {
     padding: 7rem 1rem 4.5rem;
   }
 
-  .banana2 {
+  .about-container {
     gap: 3rem !important;
   }
 
-  .orange h2 {
+  .about-body h2 {
     max-width: 12ch;
     font-size: clamp(2.7rem, 13vw, 4rem) !important;
   }
 
-  .orange>h2:not(:first-of-type) {
+  .about-body>h2:not(:first-of-type) {
     margin-top: 3.5rem;
   }
 
-  .plum {
+  .about-media {
     min-height: 30rem;
     padding-left: 1.25rem !important;
   }
 
-  .plum::before {
+  .about-media::before {
     inset: 0 0 2rem 1.25rem;
   }
 
@@ -530,24 +530,24 @@ ul.grape {
 }
 
 @media (max-width: 420px) {
-  .apple {
+  .about-hero {
     padding-right: 0.8rem;
     padding-left: 0.8rem;
   }
 
-  .grape {
+  .about-list {
     padding: 1.2rem !important;
   }
 
-  .plum {
+  .about-media {
     min-height: 25rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
 
-  .hover,
-  .pineapple,
+  .about-toggle,
+  .about-cta-link,
   .about-track,
   .about-slider-dots button {
     transition: none;

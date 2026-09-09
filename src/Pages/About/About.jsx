@@ -29,18 +29,18 @@ const About = () => {
 
   return (
     <>
-      <section className="apple">
-        <div className="banana2">
+      <section className="about-hero">
+        <div className="about-container">
           {/* Text Column */}
-          <div className="kiwi">
-            <div className="pear">
-              <div className="orange">
-                <span className="mango"> About ZOZAC</span>
+          <div className="about-content-col">
+            <div className="about-copy">
+              <div className="about-body">
+                <span className="about-eyebrow"> About ZOZAC</span>
                 <h2>
                   About ZOZAC Community
 
                 </h2>
-                <div className="text">
+                <div className="about-lead">
                   At ZOZAC Community, we are a dynamic non-governmental, non-profit civil society organization
                   dedicated to empowering the next generation of leaders and creating a brighter future for all.
                   Our focus is to empower leaders, support community development, and promote positive change.
@@ -48,14 +48,14 @@ const About = () => {
                   while we strive to
                   create opportunities for growth, development, and positive impact in our communities through areas like:
                 </div>
-                <button className="hover" style={{
+                <button className="about-toggle" style={{
                   width: "100%", padding: "12px",
                   background: "green", color: "#fff", border: "none", outline: "none"
                 }}
                   onClick={() => setopen(!open)}>{open ? "Show Less" : "Read More"}</button>
 
                 {open &&
-                  <ul className="grape">
+                  <ul className="about-list">
                     <br />
                     <li>
                       <b>Education: </b>
@@ -140,7 +140,7 @@ const About = () => {
 
 
                 <h2>Mission & Vision</h2>
-                <div className="text">
+                <div className="about-lead">
                   <p style={{ color: "green" }}>Mission:</p>
                   <br />
                   Empower individuals with self-awareness, discipline,
@@ -174,7 +174,7 @@ const About = () => {
                 </div>
 
 
-                <ul className="grape">
+                <ul className="about-list">
                   <h1>What We Do</h1>
                   <li>
                     <b>Our core purpose: </b>
@@ -211,7 +211,7 @@ const About = () => {
                     <br />
                     <b>Objectives:</b>
                     <br />
-                    <ul className="grape">
+                    <ul className="about-list">
                       <li>Train community peace ambassadors (Peace Guards) </li>
                       <br />
                       <li>Mediate conflicts and disputes</li>
@@ -232,7 +232,7 @@ const About = () => {
                     <br />
                     <b>Objectives:</b>
                     <br />
-                    <ul className="grape">
+                    <ul className="about-list">
                       <li>Provide food aid to those in need</li>
                       <br />
                       <li>Support sustainable agriculture and food systems</li>
@@ -260,7 +260,7 @@ const About = () => {
 
                     <b>Objectives:</b>
                     <br />
-                    <ul className="grape">
+                    <ul className="about-list">
                       <li>Provide educational resources and materials</li>
                       <br />
                       <li>Support teacher training and development</li>
@@ -286,7 +286,7 @@ const About = () => {
 
                     <b>Objectives:</b>
                     <br />
-                    <ul className="grape">
+                    <ul className="about-list">
                       <li>Recognize outstanding community contributions</li>
                       <br />
                       <li>Celebrate innovation and creativity</li>
@@ -315,7 +315,7 @@ const About = () => {
 
                     <b>Objectives:</b>
                     <br />
-                    <ul className="grape">
+                    <ul className="about-list">
                       <li>Provide first aids</li>
                       <br />
                       <li>Promote health education and awareness</li>
@@ -342,7 +342,7 @@ const About = () => {
 
                     <b>Objectives:</b>
                     <br />
-                    <ul className="grape">
+                    <ul className="about-list">
                       <li>Support women economic empowerment</li>
                       <br />
                       <li>Provide training and capacity-building for women</li>
@@ -375,7 +375,7 @@ const About = () => {
                     <br /> <br />
                     <b>Objectives:</b>
                     <br />
-                    <ul className="grape">
+                    <ul className="about-list">
                       <li> Provide a platform for networking and collaboration</li>
                       <br />
                       <li>Support capacity-building and training for local organizations</li>
@@ -402,7 +402,7 @@ const About = () => {
                     <br /> <br />
                     <b>Objectives:</b>
                     <br />
-                    <ul className="grape">
+                    <ul className="about-list">
                       <li> Provide training and capacity and skills building programs</li>
                       <br />
                       <li>Support research and innovation</li>
@@ -432,7 +432,7 @@ const About = () => {
                     <br /> <br />
                     <b>Objectives:</b>
                     <br />
-                    <ul className="grape">
+                    <ul className="about-list">
                       <li>Provide a platform for entrepreneurs to pitch their ideas</li>
                       <br />
                       <li>Support innovation and creativity</li>
@@ -456,7 +456,7 @@ const About = () => {
                     and mentorship with the goal is to empower young people to become leaders and change-makers.   <br /> <br />
                     <b>Objectives:</b>
                     <br />
-                    <ul className="grape">
+                    <ul className="about-list">
                       <li>Provide training and capacity-building for youth</li>
                       <br />
                       <li> Support youth leadership and mentorship</li>
@@ -472,8 +472,8 @@ const About = () => {
 
 
                 </ul>
-                <div className="lemon">
-                  <a href="tel: 674274276" className="pineapple" style={{ background: "#2d5b1a" }}>
+                <div className="about-cta-row">
+                  <a href="tel: 674274276" className="about-cta-link" style={{ background: "#2d5b1a" }}>
                     Contact Us
                   </a>
                 </div>
@@ -482,8 +482,8 @@ const About = () => {
           </div>
 
           {/* Image Column */}
-          <div className="watermelon">
-            <div className="plum">
+          <div className="about-media-col">
+            <div className="about-media">
               <div className="about-slider" aria-label="ZOZAC Community photos">
                 <div
                   className="about-track"
@@ -491,7 +491,7 @@ const About = () => {
                 >
                   {slides.map((slide) => (
                     <figure className="about-slide" key={slide.src}>
-                      <img src={slide.src} alt={slide.alt} className="img" />
+                      <img src={slide.src} alt={slide.alt} className="about-img" />
                     </figure>
                   ))}
                 </div>

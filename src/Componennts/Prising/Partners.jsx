@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import "./Partners.css";
 
 // Partner wall - add real partner names and site URLs here when available
@@ -15,6 +16,8 @@ const partners = [
 const Partners = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
   const sliderRef = useRef(null);
+  const [autoPaused, setAutoPaused] = useState(false);
+  const stopAutoSlide = useCallback(() => setAutoPaused(true), []);
   const total = partners.length;
   const isOpen = activeIndex >= 0;
 
@@ -27,6 +30,30 @@ const Partners = () => {
     () => setActiveIndex((i) => (i + 1) % total),
     [total]
   );
+
+  // Auto-advance the mobile slider until the user interacts with it
+  useEffect(() => {
+    if (autoPaused || isOpen) return undefined;
+    const el = sliderRef.current;
+    if (!el) return undefined;
+    if (typeof window === "undefined") return undefined;
+    if (window.innerWidth > 600) return undefined;
+    if (el.scrollWidth <= el.clientWidth + 4) return undefined;
+
+    const id = window.setInterval(() => {
+      const node = sliderRef.current;
+      if (!node) return;
+      const step = Math.max(node.clientWidth * 0.85, 200);
+      const atEnd = node.scrollLeft + node.clientWidth >= node.scrollWidth - 4;
+      if (atEnd) {
+        node.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        node.scrollBy({ left: step, behavior: "smooth" });
+      }
+    }, 3000);
+
+    return () => window.clearInterval(id);
+  }, [autoPaused, isOpen]);
 
   // Keyboard navigation + scroll lock while the lightbox is open
   useEffect(() => {
@@ -71,7 +98,12 @@ const Partners = () => {
 
       <div className="partners-panel">
         <div className="partners-grid-wrap">
-          <div className="partners-grid" ref={sliderRef}>
+          <div
+            className="partners-grid"
+            ref={sliderRef}
+            onTouchStart={() => setAutoPaused(true)}
+            onWheel={() => setAutoPaused(true)}
+          >
             {partners.map((partner, index) => (
               <button
                 type="button"
@@ -90,7 +122,11 @@ const Partners = () => {
             <button
               type="button"
               className="partners-slider-btn partners-slider-btn--prev"
-              onClick={() => slideBy(-1)}
+              onMouseDown={stopAutoSlide}
+              onClick={() => {
+                stopAutoSlide();
+                slideBy(-1);
+              }}
               aria-label="Previous partners"
             >
               <svg
@@ -110,7 +146,11 @@ const Partners = () => {
             <button
               type="button"
               className="partners-slider-btn partners-slider-btn--next"
-              onClick={() => slideBy(1)}
+              onMouseDown={stopAutoSlide}
+              onClick={() => {
+                stopAutoSlide();
+                slideBy(1);
+              }}
               aria-label="Next partners"
             >
               <svg
@@ -131,14 +171,15 @@ const Partners = () => {
         </div>
       </div>
 
-      {isOpen && (
-        <div
-          className="partners-lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Partner logo viewer"
-          onClick={close}
-        >
+      {isOpen &&
+        createPortal(
+          <div
+            className="partners-lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Partner logo viewer"
+            onClick={close}
+          >
           <button
             type="button"
             className="partners-lightbox-close"
@@ -223,8 +264,9 @@ const Partners = () => {
               <polyline points="9 18 15 12 9 6" />
             </svg>
           </button>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </section>
   );
 };

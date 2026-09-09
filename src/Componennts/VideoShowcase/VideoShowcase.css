@@ -1,0 +1,217 @@
+/* ============================================================
+   VIDEO SHOWCASE - auto-play on scroll
+   A cinematic section far down the homepage. The video starts
+   playing (muted) as soon as it enters the viewport. All
+   classes are prefixed with `video-showcase-`.
+   ============================================================ */
+
+.video-showcase {
+  --video-green: #1f542f;
+  --video-deep: #123b25;
+  --video-lime: #b8d58a;
+  --video-ink: #183126;
+  --video-muted: #64746a;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 6rem 1.5rem;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(184, 213, 138, 0.26), transparent 26rem),
+    linear-gradient(135deg, #f7f8f1 0%, #eef3e9 100%);
+}
+
+.video-showcase-shell {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.video-showcase-heading {
+  max-width: 44rem;
+  margin: 0 auto 2.4rem;
+  text-align: center;
+}
+
+.video-showcase-kicker {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--video-green);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.video-showcase-kicker::before,
+.video-showcase-kicker::after {
+  content: '';
+  display: inline-block;
+  width: 2.5rem;
+  height: 2px;
+  margin: 0 0.65rem 0.2rem;
+  background: var(--video-lime);
+  vertical-align: middle;
+}
+
+.video-showcase-title {
+  margin: 0 0 1rem;
+  color: var(--video-ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.video-showcase-intro {
+  margin: 0;
+  color: var(--video-muted);
+  font-size: 0.98rem;
+  line-height: 1.85;
+}
+
+/* ---------- VIDEO STAGE ---------- */
+.video-showcase-stage {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 0.5rem solid #ffffff;
+  border-radius: 0.8rem;
+  background: #0e2d1c;
+  box-shadow:
+    0 1.8rem 4rem rgba(18, 59, 37, 0.22),
+    0 0.45rem 1.1rem rgba(18, 59, 37, 0.1);
+}
+
+.video-showcase-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.video-showcase-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(14, 45, 28, 0.28) 0%,
+    rgba(14, 45, 28, 0) 30%,
+    rgba(14, 45, 28, 0) 70%,
+    rgba(14, 45, 28, 0.34) 100%
+  );
+  pointer-events: none;
+}
+
+/* Center play / pause */
+.video-showcase-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  background: rgba(18, 59, 37, 0.85);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.video-showcase-play:hover {
+  background: var(--video-lime);
+  color: #123b25;
+  transform: translate(-50%, -50%) scale(1.06);
+  box-shadow: 0 0.8rem 1.8rem rgba(18, 59, 37, 0.3);
+}
+
+/* Status pill */
+.video-showcase-status {
+  position: absolute;
+  left: 1.1rem;
+  bottom: 1.1rem;
+}
+
+.video-showcase-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  background: rgba(14, 45, 28, 0.82);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.video-showcase-pill--live .video-showcase-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--video-lime);
+  animation: video-showcase-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes video-showcase-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.72); }
+}
+
+/* Sound toggle */
+.video-showcase-sound {
+  position: absolute;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(14, 45, 28, 0.82);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.video-showcase-sound:hover {
+  background: var(--video-lime);
+  color: #123b25;
+  transform: scale(1.06);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 640px) {
+  .video-showcase {
+    padding: 4.5rem 1rem;
+  }
+
+  .video-showcase-stage {
+    border-width: 0.3rem;
+  }
+
+  .video-showcase-play {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-showcase-status,
+  .video-showcase-play,
+  .video-showcase-sound {
+    transition: none;
+  }
+
+  .video-showcase-play,
+  .video-showcase-sound {
+    animation: none;
+  }
+}

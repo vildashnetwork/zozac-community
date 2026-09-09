@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import "./Gallery.css";
 
 import photo1 from "../../assets/WhatsApp Image 2025-07-04 at 10.09.27_4c175dfb.jpg";
@@ -22,6 +23,8 @@ const Gallery = () => {
   const isOpen = activeIndex >= 0;
   const total = galleryPhotos.length;
   const sliderRef = useRef(null);
+  const [autoPaused, setAutoPaused] = useState(false);
+  const stopAutoSlide = useCallback(() => setAutoPaused(true), []);
 
   const slideBy = (direction) => {
     const el = sliderRef.current;
@@ -39,6 +42,30 @@ const Gallery = () => {
     () => setActiveIndex((i) => (i + 1) % total),
     [total]
   );
+
+  // Auto-advance the mobile slider until the user interacts with it
+  useEffect(() => {
+    if (autoPaused || isOpen) return undefined;
+    const el = sliderRef.current;
+    if (!el) return undefined;
+    if (typeof window === "undefined") return undefined;
+    if (window.innerWidth > 640) return undefined;
+    if (el.scrollWidth <= el.clientWidth + 4) return undefined;
+
+    const id = window.setInterval(() => {
+      const node = sliderRef.current;
+      if (!node) return;
+      const step = Math.max(node.clientWidth * 0.85, 220);
+      const atEnd = node.scrollLeft + node.clientWidth >= node.scrollWidth - 4;
+      if (atEnd) {
+        node.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        node.scrollBy({ left: step, behavior: "smooth" });
+      }
+    }, 3200);
+
+    return () => window.clearInterval(id);
+  }, [autoPaused, isOpen]);
 
   // Keyboard navigation + scroll lock while the lightbox is open
   useEffect(() => {
@@ -74,7 +101,12 @@ const Gallery = () => {
         </header>
 
         <div className="gallery-grid-wrap">
-          <div className="gallery-grid" ref={sliderRef}>
+          <div
+            className="gallery-grid"
+            ref={sliderRef}
+            onTouchStart={() => setAutoPaused(true)}
+            onWheel={() => setAutoPaused(true)}
+          >
             {galleryPhotos.map((photo, index) => (
               <button
                 type="button"
@@ -107,7 +139,11 @@ const Gallery = () => {
             <button
               type="button"
               className="gallery-slider-btn gallery-slider-btn--prev"
-              onClick={() => slideBy(-1)}
+              onMouseDown={stopAutoSlide}
+              onClick={() => {
+                stopAutoSlide();
+                slideBy(-1);
+              }}
               aria-label="Previous photos"
             >
               <svg
@@ -127,7 +163,11 @@ const Gallery = () => {
             <button
               type="button"
               className="gallery-slider-btn gallery-slider-btn--next"
-              onClick={() => slideBy(1)}
+              onMouseDown={stopAutoSlide}
+              onClick={() => {
+                stopAutoSlide();
+                slideBy(1);
+              }}
               aria-label="Next photos"
             >
               <svg
@@ -148,14 +188,15 @@ const Gallery = () => {
         </div>
       </div>
 
-      {isOpen && (
-        <div
-          className="lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Photo viewer"
-          onClick={close}
-        >
+      {isOpen &&
+        createPortal(
+          <div
+            className="lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Photo viewer"
+            onClick={close}
+          >
           <button
             type="button"
             className="lightbox-close"
@@ -237,8 +278,9 @@ const Gallery = () => {
               <polyline points="9 18 15 12 9 6" />
             </svg>
           </button>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </section>
   );
 };

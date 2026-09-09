@@ -25,6 +25,52 @@
   margin: 0 auto;
 }
 
+/* ---------- GRID / SLIDER WRAPPER ---------- */
+.gallery-grid-wrap {
+  position: relative;
+}
+
+.gallery-slider-controls {
+  position: absolute;
+  inset: 0;
+  display: none;
+  pointer-events: none;
+}
+
+.gallery-slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  pointer-events: auto;
+  border: 1px solid rgba(31, 84, 47, 0.25);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--gallery-green);
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1rem rgba(18, 59, 37, 0.18);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.gallery-slider-btn:hover {
+  background: var(--gallery-lime);
+  border-color: var(--gallery-lime);
+  color: #123b25;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.gallery-slider-btn--prev {
+  left: 0.25rem;
+}
+
+.gallery-slider-btn--next {
+  right: 0.25rem;
+}
+
 .gallery-heading {
   margin: 0 auto 2.6rem;
   max-width: 44rem;
@@ -74,6 +120,7 @@
   grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
   grid-auto-rows: 230px;
   gap: 1.1rem;
+  scroll-behavior: smooth;
 }
 
 .gallery-item {
@@ -254,13 +301,32 @@
     padding: 4.5rem 1rem;
   }
 
+  .gallery-slider-controls {
+    display: block;
+  }
+
+  /* The gallery becomes a swipeable / arrow-driven slider on small screens */
   .gallery-grid {
-    grid-auto-rows: 170px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
     gap: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .gallery-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .gallery-item {
+    flex: 0 0 84%;
+    height: auto;
+    aspect-ratio: 4 / 3;
     border-width: 0.3rem;
+    scroll-snap-align: center;
   }
 
   .lightbox-nav {
@@ -279,6 +345,8 @@
   .gallery-item img,
   .gallery-item-veil,
   .gallery-item-veil svg,
+  .gallery-grid,
+  .gallery-slider-btn,
   .lightbox,
   .lightbox-close,
   .lightbox-nav {

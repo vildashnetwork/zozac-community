@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./Gallery.css";
 
 import photo1 from "../../assets/WhatsApp Image 2025-07-04 at 10.09.27_4c175dfb.jpg";
@@ -21,6 +21,14 @@ const Gallery = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
   const isOpen = activeIndex >= 0;
   const total = galleryPhotos.length;
+  const sliderRef = useRef(null);
+
+  const slideBy = (direction) => {
+    const el = sliderRef.current;
+    if (!el) return;
+    const step = Math.max(el.clientWidth * 0.85, 220);
+    el.scrollBy({ left: direction * step, behavior: "smooth" });
+  };
 
   const close = useCallback(() => setActiveIndex(-1), []);
   const showPrev = useCallback(
@@ -65,33 +73,78 @@ const Gallery = () => {
           </p>
         </header>
 
-        <div className="gallery-grid">
-          {galleryPhotos.map((photo, index) => (
+        <div className="gallery-grid-wrap">
+          <div className="gallery-grid" ref={sliderRef}>
+            {galleryPhotos.map((photo, index) => (
+              <button
+                type="button"
+                key={photo.src}
+                className={`gallery-item${index % 3 === 0 ? " gallery-item--tall" : ""}`}
+                onClick={() => setActiveIndex(index)}
+                aria-label={`Open photo ${index + 1} of ${total}`}
+              >
+                <img src={photo.src} alt={photo.alt} loading="lazy" />
+                <span className="gallery-item-veil" aria-hidden="true">
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                  </svg>
+                </span>
+              </button>
+            ))}
+          </div>
+
+          <div className="gallery-slider-controls">
             <button
               type="button"
-              key={photo.src}
-              className={`gallery-item${index % 3 === 0 ? " gallery-item--tall" : ""}`}
-              onClick={() => setActiveIndex(index)}
-              aria-label={`Open photo ${index + 1} of ${total}`}
+              className="gallery-slider-btn gallery-slider-btn--prev"
+              onClick={() => slideBy(-1)}
+              aria-label="Previous photos"
             >
-              <img src={photo.src} alt={photo.alt} loading="lazy" />
-              <span className="gallery-item-veil" aria-hidden="true">
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <line x1="12" y1="5" x2="12" y2="19" />
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                </svg>
-              </span>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
             </button>
-          ))}
+            <button
+              type="button"
+              className="gallery-slider-btn gallery-slider-btn--next"
+              onClick={() => slideBy(1)}
+              aria-label="Next photos"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 

@@ -34,37 +34,42 @@ const Picturepost = () => {
   }, [id]);
 
   const shareUrl = picture._id
-    ? `https://zozacommunity.vercel.app/picturepost/${picture._id}`
+    ? `https://www.zozac-community.org/picturepost/${picture._id}`
     : "";
 
-  const shareText = picture.title || "Check this post from PEFSCOM!";
+  const shareText = picture.title || "Check this post from ZOZAC Community!";
   const content = picture.content || "";
 
   return (
-    <div className="owefui">
-      {loading && <ClipLoader />}
-      {!loading && picture && (
-        <div className="bananas">
-          {/* Badge */}
-          <div className="pineapple">zozac</div>
+    <div className="post-page">
+      {loading && (
+        <div className="post-loading">
+          <ClipLoader size={46} color="#1f542f" />
+        </div>
+      )}
 
-          {/* Image */}
-          <div className="kiwi">
-            <div className="mango">
-              <img src={picture.ImageUrl} alt={picture.title || "Post"} />
-            </div>
-          </div>
+      {!loading && picture._id && (
+        <article className="post-article">
+          {/* Article header */}
+          <header className="post-header">
+            {picture.date && <p className="post-eyebrow">{picture.date}</p>}
+            <h2 className="post-title">{picture.title}</h2>
+          </header>
 
-          {/* Content */}
-          <div className="papaya">
-            <div className="grape">{picture.title}</div>
-            <h2 className="orange">{picture.date}</h2>
-            <p className="apple">{picture.content}</p>
+          {/* Featured image */}
+          <figure className="post-media">
+            <div className="post-badge">zozac</div>
+            <img src={picture.ImageUrl} alt={picture.title || "Post"} />
+          </figure>
+
+          {/* Article body */}
+          <div className="post-body">
+            <p className="post-content">{picture.content}</p>
 
             {/* Share Buttons */}
             {shareUrl && (
-              <div className="pear share-bar">
-                <span className="share-label">Share:</span>
+              <div className="post-share">
+                <span className="post-share-label">Share:</span>
                 <WhatsappShareButton
                   url={shareUrl}
                   title={`${shareText} - ${content}`}
@@ -81,21 +86,19 @@ const Picturepost = () => {
             )}
 
             {/* Tags */}
-            <div className="pear">
-              <span className="peach">innovating</span>
-              <span className="plum">lives</span>
-              <span className="cherry">at ZOZAC</span>
+            <div className="post-tags">
+              <span className="post-tag">innovating</span>
+              <span className="post-tag">lives</span>
+              <span className="post-tag">at ZOZAC</span>
             </div>
 
-            {/* Price + Button */}
-            <div className="watermelon">
-              {/* <div className="lemon">
-                <span className="newPrice">{picture.price} frs</span>
-              </div> */}
-              {/* <button className="blueberry">
+            {/* Price + Button - enable when the API sends a price */}
+            {/* <div className="post-price-row">
+              <span className="post-price">{picture.price} frs</span>
+              <button className="post-buy">
                 <span>ZOZAC COMMUNITY</span>
                 <svg
-                  className="raspberry"
+                  className="post-buy-icon"
                   width="20"
                   height="20"
                   viewBox="0 0 24 24"
@@ -108,13 +111,12 @@ const Picturepost = () => {
                   <line x1="3" y1="6" x2="21" y2="6" />
                   <path d="M16 10a4 4 0 01-8 0" />
                 </svg>
-              </button> */}
-
-            </div>
+              </button>
+            </div> */}
 
             {/* Rating */}
-            <div className="coconut">
-              <div className="blackberry">
+            <div className="post-rating">
+              <div className="post-stars">
                 {[...Array(5)].map((_, i) => (
                   <svg
                     key={i}
@@ -125,14 +127,22 @@ const Picturepost = () => {
                     stroke="#FFD700"
                     strokeWidth="0.5"
                     xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
                   >
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                   </svg>
                 ))}
-                <span className="strawberry">245 Reviews</span>
               </div>
+              <span className="post-reviews">245 Reviews</span>
             </div>
           </div>
+        </article>
+      )}
+
+      {!loading && !picture._id && (
+        <div className="post-empty">
+          <h2>Post not found</h2>
+          <p>This story may have been removed or is temporarily unavailable.</p>
         </div>
       )}
     </div>
@@ -140,4 +150,3 @@ const Picturepost = () => {
 };
 
 export default Picturepost;
-

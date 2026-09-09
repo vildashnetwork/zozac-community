@@ -1,162 +1,318 @@
-/* PAGE WRAPPER */
-.owefui {
-  min-height: 100vh;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f4f6f8;
-  margin-top: 70px;
-}
+/* ============================================================
+   PICTURE POST PAGE - advanced editorial layout
+   The post renders as a full-page article on the interface
+   (no card). Design language mirrors the About page: ZOZAC
+   green/lime palette, serif titles, paper background.
+   All classes are prefixed with `post-` to avoid production
+   CSS collisions between pages.
+   ============================================================ */
 
-/* MAIN CARD */
-.bananas {
-  width: 100%;
-  max-width: 420px;
-  background: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-  transition: all 0.3s ease;
-  font-family: "Segoe UI", sans-serif;
-  overflow: hidden;
+.post-page {
+  --post-green: #1f542f;
+  --post-deep: #123b25;
+  --post-lime: #b8d58a;
+  --post-ink: #183126;
+  --post-muted: #64746a;
+  --post-paper: #f7f8f1;
+
   position: relative;
-}
-
-.bananas:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
-}
-
-/* BADGE */
-.pineapple {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: linear-gradient(135deg, #8b0000, #c0392b);
-  color: #fff;
-  padding: 6px 12px;
-  font-size: 11px;
-  font-weight: 700;
-  border-radius: 12px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  z-index: 10;
-}
-
-/* IMAGE */
-.kiwi {
-  width: 100%;
+  isolation: isolate;
   overflow: hidden;
+  min-height: 100vh;
+  padding: 7.5rem 1.5rem 5rem;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(184, 213, 138, 0.35), transparent 22rem),
+    radial-gradient(circle at 88% 94%, rgba(31, 84, 47, 0.08), transparent 26rem),
+    linear-gradient(135deg, #f7f8f1 0%, #eef3e9 100%);
 }
 
-.mango {
-  height: 220px;
+.post-page::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 30rem;
+  height: 30rem;
+  right: -14rem;
+  top: -10rem;
+  border: 1px solid rgba(31, 84, 47, 0.16);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 3rem rgba(31, 84, 47, 0.035),
+    0 0 0 7rem rgba(31, 84, 47, 0.025);
 }
 
-.mango img {
+/* ---------- ARTICLE ---------- */
+.post-article {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
+  max-width: 880px;
+  margin: 0 auto;
 }
 
-.bananas:hover .mango img {
-  transform: scale(1.08);
+.post-header {
+  margin: 0 0 2.2rem;
 }
 
-/* CONTENT */
-.papaya {
-  padding: 22px;
-}
-
-.grape {
-  font-size: 12px;
-  font-weight: 600;
-  color: #6b7280;
-  margin-bottom: 6px;
+.post-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 1.1rem;
+  color: var(--post-green);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
-.orange {
-  font-size: 20px;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 10px;
+.post-eyebrow::before {
+  content: '';
+  width: 2.4rem;
+  height: 2px;
+  background: var(--post-lime);
 }
 
-.apple {
-  font-size: 14px;
-  color: #4b5563;
-  line-height: 1.6;
-  margin-bottom: 15px;
+.post-title {
+  margin: 0;
+  max-width: 28ch;
+  color: var(--post-ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
 }
 
-/* SHARE BAR */
-.share-bar {
-  margin-bottom: 20px;
-  display: flex;
-  gap: 15px;
+/* ---------- MEDIA ---------- */
+.post-media {
+  position: relative;
+  margin: 0 0 2.4rem;
+  overflow: hidden;
+  border: 0.7rem solid #ffffff;
+  border-radius: 0.5rem;
+  background: var(--post-deep);
+  box-shadow:
+    0 1.6rem 3.4rem rgba(18, 59, 37, 0.18),
+    0 0.4rem 1rem rgba(18, 59, 37, 0.1);
+}
+
+.post-media img {
+  display: block;
+  width: 100%;
+  height: clamp(260px, 48vw, 460px);
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.post-media:hover img {
+  transform: scale(1.03);
+}
+
+.post-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  display: inline-flex;
   align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.9rem;
+  background: linear-gradient(135deg, var(--post-green), var(--post-deep));
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  box-shadow: 0 0.5rem 1rem rgba(18, 59, 37, 0.28);
 }
 
-.share-label {
-  font-weight: bold;
-  color: #222;
+.post-badge::before {
+  content: '';
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--post-lime);
 }
 
-/* TAGS */
-.pear {
+/* ---------- ARTICLE BODY ---------- */
+.post-body {
+  max-width: 46rem;
+}
+
+.post-content {
+  margin: 0 0 2rem;
+  color: var(--post-muted);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+/* ---------- SHARE ---------- */
+.post-share {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0 0 1.8rem;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(31, 84, 47, 0.14);
+  border-bottom: 1px solid rgba(31, 84, 47, 0.14);
+}
+
+.post-share-label {
+  margin-right: 0.2rem;
+  color: var(--post-green);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ---------- TAGS ---------- */
+.post-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 0.5rem;
+  margin: 0 0 2rem;
 }
 
-.peach,
-.plum,
-.cherry {
-  font-size: 11px;
-  background: #f3f4f6;
-  color: #374151;
-  padding: 5px 10px;
+.post-tag {
+  padding: 0.38rem 0.85rem;
+  border: 1px solid rgba(31, 84, 47, 0.16);
   border-radius: 999px;
+  background: rgba(31, 84, 47, 0.07);
+  color: var(--post-green);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* ---------- PRICE + BUY (ready for when a price is shown) ---------- */
+.post-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 2rem;
+}
+
+.post-price {
+  color: var(--post-ink);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.post-buy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.15rem;
+  border: none;
+  border-radius: 0.55rem;
+  background: linear-gradient(135deg, var(--post-green), var(--post-deep));
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.post-buy:hover {
+  background: linear-gradient(135deg, var(--post-deep), #0b2818);
+  transform: translateY(-2px);
+  box-shadow: 0 0.7rem 1.4rem rgba(18, 59, 37, 0.24);
+}
+
+/* ---------- RATING ---------- */
+.post-rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(31, 84, 47, 0.12);
+}
+
+.post-stars {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.post-stars svg {
+  flex: 0 0 auto;
+  filter: drop-shadow(0 1px 1px rgba(18, 59, 37, 0.2));
+}
+
+.post-reviews {
+  color: var(--post-muted);
+  font-size: 0.84rem;
   font-weight: 600;
 }
 
-/* PRICE + BUTTON */
-.watermelon {
+/* ---------- LOADING + EMPTY STATES ---------- */
+.post-loading {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 14px;
+  justify-content: center;
+  padding: 4rem 0;
 }
 
-.newPrice {
-  font-size: 22px;
-  font-weight: 800;
-  color: #111827;
+.post-empty {
+  max-width: 520px;
+  margin: 2rem auto 0;
+  text-align: center;
 }
 
-/* BUTTON */
-.blueberry {
-  background: linear-gradient(135deg, #111827, #1f2933);
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  padding: 10px 16px;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
+.post-empty h2 {
+  margin: 0 0 0.6rem;
+  color: var(--post-ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.9rem;
+  font-weight: 400;
 }
 
-.blueberry:hover {
-  background: linear-gradient(135deg, #1f2933, #374151);
-  transform: translateY(-2px);
+.post-empty p {
+  margin: 0;
+  color: var(--post-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
 }
 
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 640px) {
+  .post-page {
+    padding: 6rem 1rem 3.5rem;
+  }
 
+  .post-media {
+    border-width: 0.45rem;
+    margin-bottom: 2rem;
+  }
+
+  .post-media img {
+    height: 240px;
+  }
+
+  .post-share {
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .post-media img {
+    transition: none;
+  }
+
+  .post-media:hover img {
+    transform: none;
+  }
+
+  .post-buy {
+    transition: none;
+  }
+
+  .post-buy:hover {
+    transform: none;
+  }
+}

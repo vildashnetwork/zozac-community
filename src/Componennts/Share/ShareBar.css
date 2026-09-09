@@ -1,0 +1,109 @@
+/* ============================================================
+   SHARE BAR — full share row for picture + video post pages
+   All classes are prefixed with `sharebar-` to avoid
+   production CSS collisions between pages.
+   ============================================================ */
+
+.sharebar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0 0 2rem;
+  padding: 1.1rem 1.25rem;
+  border-top: 1px solid rgba(31, 84, 47, 0.14);
+  border-bottom: 1px solid rgba(31, 84, 47, 0.14);
+}
+
+.sharebar-label {
+  color: #1f542f;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sharebar-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.sharebar-buttons button {
+  display: inline-flex;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.sharebar-buttons button:hover {
+  transform: translateY(-3px);
+}
+
+.sharebar-buttons button:focus-visible {
+  outline: 2px solid #b8d58a;
+  outline-offset: 3px;
+}
+
+.sharebar-buttons svg {
+  display: block;
+}
+
+/* Round action buttons (copy link / native share sheet) */
+.sharebar-circle {
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1f542f, #123b25);
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.sharebar-circle:hover {
+  background: linear-gradient(135deg, #123b25, #0b2818);
+}
+
+.sharebar-circle.sharebar-copied {
+  background: linear-gradient(135deg, #b8d58a, #1f542f);
+}
+
+.sharebar-hint {
+  width: 100%;
+  color: #1f542f;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Dark variant for the video post glass panel */
+.sharebar-dark {
+  border-top-color: rgba(255, 255, 255, 0.18);
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+}
+
+.sharebar-dark .sharebar-label,
+.sharebar-dark .sharebar-hint {
+  color: #b8d58a;
+}
+
+.sharebar-dark .sharebar-circle {
+  background: linear-gradient(135deg, #b8d58a, #1f542f);
+}
+
+@media (max-width: 640px) {
+  .sharebar {
+    padding: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sharebar-buttons button {
+    transition: none;
+  }
+
+  .sharebar-buttons button:hover {
+    transform: none;
+  }
+}

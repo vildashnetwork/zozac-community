@@ -2,12 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
-import {
-  FacebookShareButton,
-  WhatsappShareButton,
-  FacebookIcon,
-  WhatsappIcon,
-} from "react-share";
+import ShareBar from "../../Componennts/Share/ShareBar";
 
 const VideoHero = () => {
   const { id } = useParams();
@@ -45,9 +40,18 @@ const VideoHero = () => {
       </div>
     );
 
-  const shareUrl = `https://zozacommunity.vercel.app/picturepost/${id}`;
-  const shareText = seevideo.title || "Check this video from PEFSCOM!";
-  const content = seevideo.content;
+  // Canonical page URL — crawlers are served per-post OG tags (title,
+  // description, video + poster image) for this URL via the /api/og-video rewrite.
+  const shareUrl = `https://www.zozac-community.org/posts/${id}`;
+  const shareTitle = seevideo.title || "ZOZAC Community";
+  const shareDescription = seevideo.content
+    ? `${String(seevideo.content).replace(/\s+/g, " ").trim().slice(0, 199).trim()}…`
+    : "Watch stories, activities and impact moments from the ZOZAC Community.";
+  // Cloudinary poster frame for the video when no thumbnail exists.
+  const sharePoster =
+    seevideo.VidUrl && seevideo.VidUrl.includes("/video/upload/")
+      ? seevideo.VidUrl.replace("/video/upload/", "/video/upload/so_0/")
+      : "https://www.zozac-community.org/logo3.jpg";
 
   return (
     <div
@@ -127,23 +131,16 @@ const VideoHero = () => {
             {seevideo.content}
           </p>
 
-          {/* Share Buttons */}
+          {/* Share row: WhatsApp, Facebook, X, Telegram, LinkedIn, Email, copy link + native sheet */}
           <div style={{ marginTop: "25px" }}>
-            <span style={{ fontWeight: "600", color: "#ccc" }}>Share:</span>
-            <div style={{ display: "flex", gap: "15px", marginTop: "10px" }}>
-              <WhatsappShareButton
-                url={shareUrl}
-                title={`${shareText} - ${content}`}
-              >
-                <WhatsappIcon size={42} round />
-              </WhatsappShareButton>
-              <FacebookShareButton
-                url={shareUrl}
-                quote={`${shareText} - ${content}`}
-              >
-                <FacebookIcon size={42} round />
-              </FacebookShareButton>
-            </div>
+            <ShareBar
+              url={shareUrl}
+              title={shareTitle}
+              description={shareDescription}
+              image={sharePoster}
+              tone="dark"
+              label="Share this video"
+            />
           </div>
 
           {/* Extra Info */}

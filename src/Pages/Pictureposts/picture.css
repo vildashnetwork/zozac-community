@@ -146,25 +146,7 @@
   line-height: 1.9;
 }
 
-/* ---------- SHARE ---------- */
-.post-share {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  margin: 0 0 1.8rem;
-  padding: 1rem 0;
-  border-top: 1px solid rgba(31, 84, 47, 0.14);
-  border-bottom: 1px solid rgba(31, 84, 47, 0.14);
-}
-
-.post-share-label {
-  margin-right: 0.2rem;
-  color: var(--post-green);
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
+/* ---------- SHARE (see Componennts/Share/ShareBar.css) ---------- */
 
 /* ---------- TAGS ---------- */
 .post-tags {
@@ -294,11 +276,8 @@
     height: 240px;
   }
 
-  .post-share {
-    flex-wrap: wrap;
-  }
-}
 
+}
 @media (prefers-reduced-motion: reduce) {
   .post-media img {
     transition: none;

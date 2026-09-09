@@ -1,7 +1,29 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/picturepost/:id",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(facebookexternalhit|Facebot|facebook|Twitterbot|twitter|LinkedInBot|linkedin|TelegramBot|telegram|WhatsApp|whatsapp|Discordbot|discord|Slackbot|slack|Embedly|embedly|SkypeUriPreview|skype).*"
+        }
+      ],
+      "destination": "/api/og-picture/:id"
+    },
+    {
+      "source": "/posts/:id",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(facebookexternalhit|Facebot|facebook|Twitterbot|twitter|LinkedInBot|linkedin|TelegramBot|telegram|WhatsApp|whatsapp|Discordbot|discord|Slackbot|slack|Embedly|embedly|SkypeUriPreview|skype).*"
+        }
+      ],
+      "destination": "/api/og-video/:id"
+    },
+    {
+      "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ]

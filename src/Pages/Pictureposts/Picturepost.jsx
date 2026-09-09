@@ -4,12 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { ClipLoader } from "react-spinners";
-import {
-  FacebookShareButton,
-  WhatsappShareButton,
-  FacebookIcon,
-  WhatsappIcon,
-} from "react-share";
+import ShareBar from "../../Componennts/Share/ShareBar";
 
 const Picturepost = () => {
   const { id } = useParams();
@@ -33,12 +28,17 @@ const Picturepost = () => {
     fetchPicture();
   }, [id]);
 
+  // Canonical page URL — crawlers are served per-post OG tags (title,
+  // description, image) for this URL via the /api/og-picture rewrite.
   const shareUrl = picture._id
     ? `https://www.zozac-community.org/picturepost/${picture._id}`
     : "";
 
-  const shareText = picture.title || "Check this post from ZOZAC Community!";
-  const content = picture.content || "";
+  const shareTitle = picture.title || "ZOZAC Community";
+  const shareDescription = picture.content
+    ? `${String(picture.content).replace(/\s+/g, " ").trim().slice(0, 199).trim()}…`
+    : "Stories, activities and impact moments from the ZOZAC Community.";
+  const shareImage = picture.ImageUrl || "https://www.zozac-community.org/logo3.jpg";
 
   return (
     <div className="post-page">
@@ -66,23 +66,15 @@ const Picturepost = () => {
           <div className="post-body">
             <p className="post-content">{picture.content}</p>
 
-            {/* Share Buttons */}
+            {/* Share row: WhatsApp, Facebook, X, Telegram, LinkedIn, Email, copy link + native sheet */}
             {shareUrl && (
-              <div className="post-share">
-                <span className="post-share-label">Share:</span>
-                <WhatsappShareButton
-                  url={shareUrl}
-                  title={`${shareText} - ${content}`}
-                >
-                  <WhatsappIcon size={40} round />
-                </WhatsappShareButton>
-                <FacebookShareButton
-                  url={shareUrl}
-                  quote={`${shareText} - ${content}`}
-                >
-                  <FacebookIcon size={40} round />
-                </FacebookShareButton>
-              </div>
+              <ShareBar
+                url={shareUrl}
+                title={shareTitle}
+                description={shareDescription}
+                image={shareImage}
+                label="Share this story"
+              />
             )}
 
             {/* Tags */}

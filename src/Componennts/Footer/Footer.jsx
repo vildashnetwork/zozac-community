@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Footer.css';
 import { Link } from 'react-router-dom';
-import { WhatsappIcon } from "react-share";
+import WhatsAppKit from '../WhatsApp/WhatsAppKit';
 import logo from "/logo1.jpg";
 
 const Footer = () => {
@@ -122,16 +122,8 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Fixed WhatsApp floating button */}
-      <a
-        className="float-whatsapp"
-        href="https://wa.me/message/WYIXQMMFCXDVH1"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat with us on WhatsApp"
-      >
-        <WhatsappIcon size={32} round />
-      </a>
+      {/* Floating WhatsApp chat kit */}
+      <WhatsAppKit />
     </footer>
   );
 };

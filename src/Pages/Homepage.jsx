@@ -15,6 +15,32 @@ const Homepage = () => {
       <Hero />
       <Features />
       <VideoShowcase />
+
+      <br />
+      <div className="footer-location">
+        <div className="footer-location-heading">
+          <span className="footer-location-kicker">Find us</span>
+          <h4>Our location</h4>
+        </div>
+        <div className="footer-location-map">
+          <iframe
+            title="ZOZAC Community on Google Maps"
+            src="https://maps.google.com/maps?q=ZOZAC+Community+AFUH+Alfred+Ngum+Likomba&z=16&hl=en&ie=UTF8&output=embed"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          ></iframe>
+        </div>
+        <a
+          className="footer-location-link"
+          href="https://maps.app.goo.gl/hqjXhBJcCB8FCaPJ6"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in Google Maps →
+        </a>
+      </div>
+
       <UseCases />
       <Samples />
       <Gallery />

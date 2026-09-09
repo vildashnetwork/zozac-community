@@ -145,11 +145,12 @@ const AuthForms = () => {
               required
             />
             <button
+              type="button"
+              className="auth-toggle"
               onClick={(e) => {
                 e.preventDefault();
                 setShowPassword(prev => !prev);
               }}
-              style={{ width: "150px", fontSize: "16px", margin: "17px" }}
             >
               {showPassword ? "Hide" : "Show"} Password
             </button>
@@ -184,11 +185,12 @@ const AuthForms = () => {
               required
             />
             <button
+              type="button"
+              className="auth-toggle"
               onClick={(e) => {
                 e.preventDefault();
                 setShowPassword(prev => !prev);
               }}
-              style={{ width: "150px", fontSize: "16px", margin: "20px" }}
             >
               {showPassword ? 'Hide' : 'Show'} Password
             </button>

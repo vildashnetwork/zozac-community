@@ -1,109 +1,248 @@
-.charles {
-  height: 100vh;
+/* ============================================================
+   PROJECT REQUEST (ORDER) - advanced styles
+   All classes are prefixed with `order-` to avoid production
+   CSS collisions between pages.
+   ============================================================ */
+
+.order-page {
+  --order-green: #1f542f;
+  --order-deep: #123b25;
+  --order-lime: #b8d58a;
+  --order-ink: #183126;
+  --order-muted: #64746a;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100vh;
+  padding: 7.5rem 1.5rem 5rem;
+  background:
+    radial-gradient(circle at 88% 10%, rgba(184, 213, 138, 0.3), transparent 24rem),
+    radial-gradient(circle at 6% 92%, rgba(31, 84, 47, 0.07), transparent 26rem),
+    linear-gradient(135deg, #f7f8f1 0%, #eef3e9 100%);
 }
 
-@keyframes animatedBackground {
-  from { background-position: 0 0; }
-  to { background-position: 100% 0; }
+.order-shell {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.juliet {
-  max-width: 300px;
-  margin: 10px auto;
-  padding: 20px;
-  background: #f4f7f8;
-  border-radius: 8px;
-}
-
-.maria a {
-  color: #333;
-  font-weight: 500;
-  text-decoration: none;
-  font-size: 26px;
-}
-
-.ken {
-  margin: 0 0 30px 0;
+/* ---------- HEADER ---------- */
+.order-heading {
+  max-width: 44rem;
+  margin: 0 auto 2.6rem;
   text-align: center;
 }
 
-.innerr {
-  height: 200px;
+.order-kicker {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--order-green);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
-.fill {
-  height: 50px;
+.order-kicker::before,
+.order-kicker::after {
+  content: '';
+  display: inline-block;
+  width: 2.5rem;
+  height: 2px;
+  margin: 0 0.65rem 0.2rem;
+  background: var(--order-lime);
+  vertical-align: middle;
 }
 
-.mike,
-.flora {
-  background: rgba(255, 255, 255, 0.1);
+.order-title {
+  margin: 0 0 1.4rem;
+  color: var(--order-ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.order-intro {
+  max-width: 40rem;
+  margin: 0 auto 0.4rem;
+  color: var(--order-muted);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+/* ---------- LAYOUT ---------- */
+.order-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.order-column {
+  flex: 1 1 360px;
+  max-width: 600px;
+}
+
+/* ---------- FORM CARD ---------- */
+.order-form {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.8rem;
+  border: 1px solid rgba(31, 84, 47, 0.12);
+  border-radius: 0.9rem;
+  background: #ffffff;
+  box-shadow:
+    0 1.4rem 3.2rem rgba(18, 59, 37, 0.12),
+    0 0.35rem 0.9rem rgba(18, 59, 37, 0.06);
+}
+
+.order-fields {
   border: none;
-  font-size: 16px;
-  margin: 0;
-  outline: 0;
-  padding: 15px;
+  margin: 0 0 1.7rem;
+  padding: 0;
+}
+
+.order-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
   width: 100%;
-  background-color: #e8eeef;
-  color: #333;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
-  margin-bottom: 20px;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 2px solid rgba(31, 84, 47, 0.1);
+  color: var(--order-ink);
+  font-size: 1.05rem;
+  font-weight: 700;
 }
 
-input[type="radio"],
-input[type="checkbox"] {
-  margin: 0 4px 8px 0;
+.order-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--order-green), var(--order-deep));
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 800;
 }
 
-.flora {
-  padding: 6px;
-  border-radius: 4px;
+.order-label {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--order-green);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.blessing {
-  padding: 15px;
-  color: #fff;
-  background-color: #5e4bc9;
-  font-size: 18px;
-  text-align: center;
-  border-radius: 5px;
+.order-input,
+.order-textarea,
+.order-select {
   width: 100%;
-  border: 1px solid #483ac1;
-  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
-  margin-top: 10px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.1rem;
+  border: 1.5px solid rgba(31, 84, 47, 0.18);
+  border-radius: 0.6rem;
+  background: #fbfcf9;
+  color: var(--order-ink);
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.order-input::placeholder,
+.order-textarea::placeholder {
+  color: #9aa89f;
+}
+
+.order-input:focus,
+.order-textarea:focus,
+.order-select:focus {
+  border-color: var(--order-green);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(184, 213, 138, 0.35);
+}
+
+.order-textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.order-select {
   cursor: pointer;
 }
 
-.victor {
-  margin-bottom: 20px;
+/* ---------- SUBMIT ---------- */
+.order-submit {
+  margin: 0.6rem 0 0;
+  padding: 0.95rem 1.3rem;
   border: none;
+  border-radius: 0.6rem;
+  background: linear-gradient(135deg, var(--order-green), var(--order-deep));
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0.7rem 1.6rem rgba(18, 59, 37, 0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, opacity 0.25s ease;
 }
 
-.nina {
-  display: block;
-  margin-bottom: 8px;
+.order-submit:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--order-deep), #0b2818);
+  transform: translateY(-2px);
+  box-shadow: 0 1rem 2rem rgba(18, 59, 37, 0.28);
 }
 
-.number {
-  background-color: #5f99cf;
-  color: #fff;
-  height: 30px;
-  width: 30px;
-  display: inline-block;
-  font-size: 0.8em;
-  margin-right: 4px;
-  line-height: 30px;
+.order-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.order-note {
+  margin: 0.9rem 0 0;
+  color: var(--order-muted);
+  font-size: 0.82rem;
+  font-style: italic;
   text-align: center;
-  border-radius: 50%;
 }
 
-@media screen and (min-width: 480px) {
-  .juliet {
-    max-width: 480px;
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 640px) {
+  .order-page {
+    padding: 6rem 1rem 3.5rem;
+  }
+
+  .order-grid {
+    gap: 1.5rem;
+  }
+
+  .order-column {
+    flex: 1 1 100%;
+  }
+
+  .order-form {
+    padding: 1.5rem 1.1rem;
   }
 }
 
-.hello {
-  min-height: 100vh;
-  margin-top: 100px;
+@media (prefers-reduced-motion: reduce) {
+  .order-input,
+  .order-textarea,
+  .order-select,
+  .order-submit {
+    transition: none;
+  }
+
+  .order-submit:hover:not(:disabled) {
+    transform: none;
+  }
 }

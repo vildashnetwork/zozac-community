@@ -1,80 +1,204 @@
+/* ============================================================
+   LOGIN / SIGNUP - advanced styles
+   Classes kept: .containe, .form-container, .form,
+   .form__input-wrapper, .addproduct-thumbnail-image
+   Added: .auth-toggle
+   ============================================================ */
 
-    .containe {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 170vh;
-    }
+.containe {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 7.5rem 1.5rem 4rem;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(184, 213, 138, 0.3), transparent 22rem),
+    linear-gradient(135deg, #f7f8f1 0%, #eef3e9 100%);
+}
 
-    .form-container {
-      width: 600px;
-      margin: 0 auto;
-      padding: 50px;
-      background-color: #333;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      color: #fff;
-    }
+.form-container {
+  width: min(100%, 540px);
+  padding: clamp(1.8rem, 5vw, 2.8rem);
+  border: 1px solid rgba(31, 84, 47, 0.12);
+  border-radius: 1.1rem;
+  background: #ffffff;
+  box-shadow:
+    0 1.6rem 3.6rem rgba(18, 59, 37, 0.14),
+    0 0.4rem 1rem rgba(18, 59, 37, 0.07);
+  color: #22332b;
+}
 
-     .form-container   h1 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 36px;
-      color: #b38bff;
-    }
+.form-container h1 {
+  position: relative;
+  margin: 0 0 1.8rem;
+  padding-bottom: 1rem;
+  color: #183126;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
 
-    .form {
-      display: flex;
-      flex-direction: column;
-    }
+.form-container h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3rem;
+  height: 3px;
+  border-radius: 999px;
+  background: #b8d58a;
+}
 
- .form   label {
-      margin-bottom: 10px;
-      font-size: 18px;
-    }
+.form {
+  display: flex;
+  flex-direction: column;
+}
 
-  .form  input {
-      padding: 12px;
-      border: none;
-      border-radius: 5px;
-      margin-bottom: 20px;
-      font-size: 16px;
-      color: #fff;
-      background-color: #555;
-    }
+.form label {
+  margin-bottom: 0.45rem;
+  color: #1f542f;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 
-  .form  button {
-      padding: 10px;
-      background-color: #037256;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 18px;
-      transition: background-color 0.2s ease-in-out;
-    }
+.form input {
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.1rem;
+  border: 1.5px solid rgba(31, 84, 47, 0.18);
+  border-radius: 0.6rem;
+  background: #fbfcf9;
+  color: #183126;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
 
-    button:hover {
-      background-color: #0f5f1c44;
-    }
+.form input::placeholder {
+  color: #9aa89f;
+}
 
-       .form-container p a {
-      text-decoration: none;
-      color: #197202;
-      font-size: 18px;
-      transition: color 0.2s ease-in-out;
-    }
+.form input:focus {
+  border-color: #1f542f;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(184, 213, 138, 0.35);
+}
 
-     .form-container p   a:hover {
-      color: #098a5f;
-    }
+.form button {
+  cursor: pointer;
+  font-family: inherit;
+}
 
-     .form-container   p {
-      text-align: center;
-      margin: 8px;
-    }
-    .addproduct-thumbnail-image{
-    cursor:  pointer !important;
-    width: 200px;
-    height: 210px;
+.form button[type='submit'] {
+  padding: 0.9rem 1.2rem;
+  border: none;
+  border-radius: 0.6rem;
+  background: linear-gradient(135deg, #1f542f, #123b25);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 0.6rem 1.4rem rgba(18, 59, 37, 0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, opacity 0.25s ease;
+}
+
+.form button[type='submit']:hover:not(:disabled) {
+  background: linear-gradient(135deg, #123b25, #0b2818);
+  transform: translateY(-2px);
+  box-shadow: 0 0.9rem 1.8rem rgba(18, 59, 37, 0.28);
+}
+
+.form button[type='submit']:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.auth-toggle {
+  align-self: flex-start;
+  margin: 0 0 1.1rem;
+  padding: 0.45rem 0.95rem;
+  border: 1px solid rgba(31, 84, 47, 0.25);
+  border-radius: 999px;
+  background: rgba(31, 84, 47, 0.05);
+  color: #1f542f;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.auth-toggle:hover {
+  background: rgba(31, 84, 47, 0.12);
+  border-color: #1f542f;
+}
+
+.form__input-wrapper label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  margin-bottom: 1.1rem;
+  border: 1.5px dashed rgba(31, 84, 47, 0.3);
+  border-radius: 0.7rem;
+  background: rgba(31, 84, 47, 0.04);
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.form__input-wrapper label:hover {
+  border-color: #1f542f;
+  background: rgba(31, 84, 47, 0.08);
+}
+
+.addproduct-thumbnail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.6rem;
+}
+
+.form-container p {
+  margin: 1rem 0 0;
+  color: #64746a;
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+.form-container p a {
+  color: #1f542f;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid #b8d58a;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.form-container p a:hover {
+  color: #123b25;
+  border-color: #1f542f;
+}
+
+@media (max-width: 480px) {
+  .containe {
+    padding: 6rem 1rem 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form input,
+  .form button,
+  .auth-toggle,
+  .form__input-wrapper label,
+  .form-container p a {
+    transition: none;
+  }
+
+  .form button[type='submit']:hover:not(:disabled) {
+    transform: none;
+  }
 }

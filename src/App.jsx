@@ -4,6 +4,7 @@ import Navbar from './Componennts/Navbar/Navbar';
 import Footer from './Componennts/Footer/Footer';
 import { Toaster } from 'react-hot-toast';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ScrollToTop from './Componennts/ScrollToTop';
 import Homepage from './Pages/Homepage';
 import AuthForms from './Pages/LOGIN/Login';
 import VideoHero from './Pages/Videoposts/Videoposts';
@@ -61,6 +62,7 @@ function App() {
     <>
     <BrowserRouter>
      <Toaster position="top-center" reverseOrder={false} />
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path='/' element={<Homepage/>}/>

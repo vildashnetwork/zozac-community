@@ -1,73 +1,279 @@
-.kiwifruit {
-  width: 90%;
-  max-width: 900px;
-  margin: 150px auto;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
-  overflow: hidden;
-  background: #000;
+/* ============================================================
+   VIDEO POST PAGE - advanced editorial layout
+   Mirrors the picture-post article design: ZOZAC green/lime
+   palette, serif titles, paper background. All classes are
+   prefixed with `video-post-` to avoid production CSS
+   collisions between pages. The legacy `kiwifruit`/`lychee`
+   classes are gone - this file is the single source of truth.
+   ============================================================ */
+
+.video-post-page {
+  --vp-green: #1f542f;
+  --vp-deep: #123b25;
+  --vp-lime: #b8d58a;
+  --vp-ink: #183126;
+  --vp-muted: #64746a;
+  --vp-paper: #f7f8f1;
+
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100vh;
+  padding: 7.5rem 1.5rem 5rem;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(184, 213, 138, 0.35), transparent 22rem),
+    radial-gradient(circle at 88% 94%, rgba(31, 84, 47, 0.08), transparent 26rem),
+    linear-gradient(135deg, #f7f8f1 0%, #eef3e9 100%);
 }
 
-.lychee {
-  width: 100%;
+.video-post-page::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 30rem;
+  height: 30rem;
+  right: -14rem;
+  top: -10rem;
+  border: 1px solid rgba(31, 84, 47, 0.16);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 3rem rgba(31, 84, 47, 0.035),
+    0 0 0 7rem rgba(31, 84, 47, 0.025);
 }
 
-.rambutan {
-  height: 40vh;
+/* ---------- ARTICLE ---------- */
+.video-post-article {
   width: 100%;
-  background-color: #e6e3e3;
-  display: flex;
-  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: vp-fade-up 0.6s ease both;
 }
 
-.jabuticaba {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
+.video-post-header {
+  margin: 0 0 2.2rem;
+  max-width: 880px;
+}
+
+.video-post-eyebrow {
+  display: inline-flex;
   align-items: center;
-  padding: 32px;
+  gap: 0.6rem;
+  margin: 0 0 1.1rem;
+  color: var(--vp-green);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
-.jabuticaba h1 {
-  font-size: 32px;
-  font-family: sans-serif;
-  font-weight: 700;
+.video-post-eyebrow::before {
+  content: "";
+  width: 2.4rem;
+  height: 2px;
+  background: var(--vp-lime);
 }
 
-.jabuticaba p {
-  font-size: 19px;
+.video-post-title {
+  margin: 0;
+  color: var(--vp-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
 }
 
-.santol {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 22px;
+/* ---------- GRID: player + info ---------- */
+.video-post-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.9fr) minmax(300px, 1fr);
+  gap: 2.5rem;
+  align-items: start;
 }
 
-.santol p,
-.santol h1 {
-  font-size: 22px;
+/* ---------- PLAYER ---------- */
+.video-post-player {
+  position: relative;
+  overflow: hidden;
+  border: 0.7rem solid #ffffff;
+  border-radius: 0.5rem;
+  background: #0b1f14;
+  box-shadow:
+    0 1.6rem 3.4rem rgba(18, 59, 37, 0.18),
+    0 0.4rem 1rem rgba(18, 59, 37, 0.1);
 }
 
-/* Responsive video styles */
-.mulberry {
+.video-post-player video {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
-  border-radius: 12px;
-  object-fit: contain;
-  animation: fadeIn 1s ease-in forwards;
+  max-height: 72vh;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  outline: none;
 }
 
-/* Optional: add a subtle fade-in animation */
-@keyframes fadeIn {
+.video-post-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.9rem;
+  background: linear-gradient(135deg, var(--vp-green), var(--vp-deep));
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  box-shadow: 0 0.5rem 1rem rgba(18, 59, 37, 0.28);
+}
+
+.video-post-badge::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--vp-lime);
+}
+
+/* ---------- INFO CARD ---------- */
+.video-post-info {
+  background: #ffffff;
+  border: 1px solid rgba(31, 84, 47, 0.14);
+  border-radius: 1rem;
+  padding: 1.8rem;
+  box-shadow: 0 1.2rem 2.6rem rgba(18, 59, 37, 0.1);
+}
+
+.video-post-info-title {
+  margin: 0 0 0.9rem;
+  color: var(--vp-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.video-post-info-text {
+  margin: 0;
+  color: var(--vp-muted);
+  font-size: 0.98rem;
+  line-height: 1.8;
+}
+
+.video-post-share {
+  margin-top: 1.5rem;
+}
+
+.video-post-meta {
+  margin-top: 1.5rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid rgba(31, 84, 47, 0.14);
+  border-radius: 0.75rem;
+  background: rgba(31, 84, 47, 0.05);
+}
+
+.video-post-meta p {
+  margin: 0;
+  color: var(--vp-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.video-post-meta p + p {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed rgba(31, 84, 47, 0.18);
+}
+
+.video-post-meta strong {
+  color: var(--vp-green);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.76rem;
+  margin-right: 0.4rem;
+}
+
+/* ---------- LOADING + EMPTY ---------- */
+.video-post-loading,
+.video-post-empty {
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.video-post-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  color: var(--vp-muted);
+  font-size: 0.95rem;
+}
+
+.video-post-empty h2 {
+  margin: 0 0 0.6rem;
+  color: var(--vp-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.9rem;
+  font-weight: 400;
+}
+
+.video-post-empty p {
+  margin: 0;
+  color: var(--vp-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+@keyframes vp-fade-up {
   from {
     opacity: 0;
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 992px) {
+  .video-post-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .video-post-header {
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .video-post-page {
+    padding: 6rem 1rem 3.5rem;
+  }
+
+  .video-post-player {
+    border-width: 0.45rem;
+  }
+
+  .video-post-player video {
+    max-height: none;
+  }
+
+  .video-post-info {
+    padding: 1.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-post-article {
+    animation: none;
   }
 }

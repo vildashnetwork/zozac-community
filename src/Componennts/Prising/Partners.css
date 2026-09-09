@@ -1,0 +1,132 @@
+/* ============================================================
+   PARTNERS WALL - advanced styles
+   Lives inside section.pricing, so it reuses the `--pricing-*`
+   palette variables. All classes are prefixed with `partners-`
+   to avoid production CSS collisions.
+   ============================================================ */
+
+.partners {
+  margin-top: 4.5rem;
+}
+
+.partners-heading {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.partners-kicker {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--pricing-green, #1f542f);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.partners-kicker::before {
+  content: '';
+  display: inline-block;
+  width: 2.5rem;
+  height: 2px;
+  margin: 0 0.65rem 0.2rem 0;
+  background: var(--pricing-lime, #b8d58a);
+}
+
+.partners-title {
+  margin: 0 0 1.1rem;
+  color: var(--pricing-ink, #183126);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.partners-intro {
+  max-width: 40rem;
+  margin: 0 auto;
+  color: var(--pricing-muted, #64746a);
+  font-size: 0.98rem;
+  line-height: 1.85;
+}
+
+.partners-panel {
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  border: 1px solid rgba(31, 84, 47, 0.1);
+  border-radius: 0.6rem;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 1.5rem 4rem rgba(18, 59, 37, 0.08);
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+  gap: 1.4rem;
+}
+
+.partners-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  padding: 1.2rem;
+  border: 1px solid rgba(31, 84, 47, 0.12);
+  border-radius: 0.6rem;
+  background: #ffffff;
+  box-shadow: 0 0.8rem 1.8rem rgba(18, 59, 37, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.partners-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(31, 84, 47, 0.35);
+  box-shadow: 0 1.4rem 2.8rem rgba(18, 59, 37, 0.14);
+}
+
+.partners-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 0.25rem;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.partners-card:hover img {
+  transform: scale(1.04);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+  .partners {
+    margin-top: 3rem;
+  }
+
+  .partners-panel {
+    padding: 1rem;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr));
+    gap: 0.9rem;
+  }
+
+  .partners-card {
+    padding: 0.9rem;
+    border-radius: 0.45rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partners-card,
+  .partners-card img {
+    transition: none;
+  }
+
+  .partners-card:hover {
+    transform: none;
+  }
+
+  .partners-card:hover img {
+    transform: none;
+  }
+}

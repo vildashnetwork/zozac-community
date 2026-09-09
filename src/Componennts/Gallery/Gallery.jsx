@@ -2,29 +2,60 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "./Gallery.css";
 
-import photo1 from "../../assets/WhatsApp Image 2025-07-04 at 10.09.27_4c175dfb.jpg";
-import photo2 from "../../assets/WhatsApp Image 2025-07-04 at 10.09.29_8f52353b.jpg";
-import photo3 from "../../assets/WhatsApp Image 2025-07-04 at 10.09.30_441aaa22.jpg";
-import photo4 from "../../assets/WhatsApp Image 2025-07-04 at 10.09.32_59085943.jpg";
-import photo5 from "../../assets/WhatsApp Image 2025-07-04 at 10.09.35_3aa4d729.jpg";
-import photo6 from "../../assets/WhatsApp Image 2025-07-04 at 10.09.40_474fb199.jpg";
-
-const galleryPhotos = [
-  { src: photo1, alt: "ZOZAC Community members together at a gathering" },
-  { src: photo2, alt: "ZOZAC Community outreach in action" },
-  { src: photo3, alt: "Community members celebrating a milestone" },
-  { src: photo4, alt: "ZOZAC team engaging with the community" },
-  { src: photo5, alt: "ZOZAC Community gathering and dialogue" },
-  { src: photo6, alt: "Youth empowerment moment at ZOZAC" },
-];
 
 const Gallery = () => {
+  const [galleryPhotos, setGalleryPhotos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [fetchError, setFetchError] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const isOpen = activeIndex >= 0;
   const total = galleryPhotos.length;
   const sliderRef = useRef(null);
   const [autoPaused, setAutoPaused] = useState(false);
   const stopAutoSlide = useCallback(() => setAutoPaused(true), []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const fetchGallery = async () => {
+      try {
+        setLoading(true);
+        setFetchError(false);
+        const response = await fetch(
+          "https://zozacbackend.onrender.com/admin/picture/post",
+          { signal: controller.signal }
+        );
+
+        if (!response.ok) {
+          throw new Error(`Gallery request failed with status ${response.status}`);
+        }
+
+        const posts = await response.json();
+        const galleryPosts = (Array.isArray(posts) ? posts : [])
+          .filter(
+            (post) => post?.category === "Gallery" && typeof post.ImageUrl === "string"
+          )
+          .map((post) => ({
+            src: post.ImageUrl,
+            alt: post.title || "ZOZAC Community gallery image",
+          }));
+
+        setGalleryPhotos(galleryPosts);
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          console.error("Failed to fetch gallery images", error);
+          setFetchError(true);
+          setGalleryPhotos([]);
+        }
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
+      }
+    };
+
+    fetchGallery();
+
+    return () => controller.abort();
+  }, []);
 
   const slideBy = (direction) => {
     const el = sliderRef.current;
@@ -101,90 +132,100 @@ const Gallery = () => {
         </header>
 
         <div className="gallery-grid-wrap">
-          <div
-            className="gallery-grid"
-            ref={sliderRef}
-            onTouchStart={() => setAutoPaused(true)}
-            onWheel={() => setAutoPaused(true)}
-          >
-            {galleryPhotos.map((photo, index) => (
-              <button
-                type="button"
-                key={photo.src}
-                className={`gallery-item${index % 3 === 0 ? " gallery-item--tall" : ""}`}
-                onClick={() => setActiveIndex(index)}
-                aria-label={`Open photo ${index + 1} of ${total}`}
+          {loading ? (
+            <p className="gallery-status">Loading gallery images...</p>
+          ) : fetchError ? (
+            <p className="gallery-status">Gallery images could not be loaded.</p>
+          ) : galleryPhotos.length === 0 ? (
+            <p className="gallery-status">No gallery images are available yet.</p>
+          ) : (
+            <>
+              <div
+                className="gallery-grid"
+                ref={sliderRef}
+                onTouchStart={() => setAutoPaused(true)}
+                onWheel={() => setAutoPaused(true)}
               >
-                <img src={photo.src} alt={photo.alt} loading="lazy" />
-                <span className="gallery-item-veil" aria-hidden="true">
+                {galleryPhotos.map((photo, index) => (
+                  <button
+                    type="button"
+                    key={`${photo.src}-${index}`}
+                    className={`gallery-item${index % 3 === 0 ? " gallery-item--tall" : ""}`}
+                    onClick={() => setActiveIndex(index)}
+                    aria-label={`Open photo ${index + 1} of ${total}`}
+                  >
+                    <img src={photo.src} alt={photo.alt} loading="lazy" />
+                    <span className="gallery-item-veil" aria-hidden="true">
+                      <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.2"
+                        strokeLinecap="round"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                      </svg>
+                    </span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="gallery-slider-controls">
+                <button
+                  type="button"
+                  className="gallery-slider-btn gallery-slider-btn--prev"
+                  onMouseDown={stopAutoSlide}
+                  onClick={() => {
+                    stopAutoSlide();
+                    slideBy(-1);
+                  }}
+                  aria-label="Previous photos"
+                >
                   <svg
-                    width="22"
-                    height="22"
+                    width="20"
+                    height="20"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2.2"
                     strokeLinecap="round"
+                    strokeLinejoin="round"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="15 18 9 12 15 6" />
                   </svg>
-                </span>
-              </button>
-            ))}
-          </div>
-
-          <div className="gallery-slider-controls">
-            <button
-              type="button"
-              className="gallery-slider-btn gallery-slider-btn--prev"
-              onMouseDown={stopAutoSlide}
-              onClick={() => {
-                stopAutoSlide();
-                slideBy(-1);
-              }}
-              aria-label="Previous photos"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              className="gallery-slider-btn gallery-slider-btn--next"
-              onMouseDown={stopAutoSlide}
-              onClick={() => {
-                stopAutoSlide();
-                slideBy(1);
-              }}
-              aria-label="Next photos"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </button>
-          </div>
+                </button>
+                <button
+                  type="button"
+                  className="gallery-slider-btn gallery-slider-btn--next"
+                  onMouseDown={stopAutoSlide}
+                  onClick={() => {
+                    stopAutoSlide();
+                    slideBy(1);
+                  }}
+                  aria-label="Next photos"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
 
@@ -197,87 +238,87 @@ const Gallery = () => {
             aria-label="Photo viewer"
             onClick={close}
           >
-          <button
-            type="button"
-            className="lightbox-close"
-            onClick={close}
-            aria-label="Close photo viewer"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              xmlns="http://www.w3.org/2000/svg"
+            <button
+              type="button"
+              className="lightbox-close"
+              onClick={close}
+              aria-label="Close photo viewer"
             >
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          </button>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
 
-          <button
-            type="button"
-            className="lightbox-nav lightbox-nav--prev"
-            onClick={(e) => {
-              e.stopPropagation();
-              showPrev();
-            }}
-            aria-label="Previous photo"
-          >
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              xmlns="http://www.w3.org/2000/svg"
+            <button
+              type="button"
+              className="lightbox-nav lightbox-nav--prev"
+              onClick={(e) => {
+                e.stopPropagation();
+                showPrev();
+              }}
+              aria-label="Previous photo"
             >
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-          </button>
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
 
-          <figure className="lightbox-figure" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={galleryPhotos[activeIndex].src}
-              alt={galleryPhotos[activeIndex].alt}
-            />
-            <figcaption className="lightbox-caption">
-              <span>{galleryPhotos[activeIndex].alt}</span>
-              <span className="lightbox-counter">
-                {activeIndex + 1} / {total}
-              </span>
-            </figcaption>
-          </figure>
+            <figure className="lightbox-figure" onClick={(e) => e.stopPropagation()}>
+              <img
+                src={galleryPhotos[activeIndex].src}
+                alt={galleryPhotos[activeIndex].alt}
+              />
+              <figcaption className="lightbox-caption">
+                <span>{galleryPhotos[activeIndex].alt}</span>
+                <span className="lightbox-counter">
+                  {activeIndex + 1} / {total}
+                </span>
+              </figcaption>
+            </figure>
 
-          <button
-            type="button"
-            className="lightbox-nav lightbox-nav--next"
-            onClick={(e) => {
-              e.stopPropagation();
-              showNext();
-            }}
-            aria-label="Next photo"
-          >
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              xmlns="http://www.w3.org/2000/svg"
+            <button
+              type="button"
+              className="lightbox-nav lightbox-nav--next"
+              onClick={(e) => {
+                e.stopPropagation();
+                showNext();
+              }}
+              aria-label="Next photo"
             >
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </button>
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
           </div>,
           document.body
         )}

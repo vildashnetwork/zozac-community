@@ -1,79 +1,257 @@
-.donate-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 1200px;
-    z-index: 1000;
-    padding: 2rem;
-    border-radius: 20px;
-    background: #ffffff;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    animation: fadeIn 0.5s ease-in-out;
+/* ============================================================
+   DONATE MODAL - proper accessible dialog, brand styled.
+   Rendered via portal to document.body so it always sits
+   above the fixed header (z-index 9999). All classes are
+   prefixed with donate- to avoid production CSS collisions.
+   ============================================================ */
+
+.donate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(11, 36, 23, 0.62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: donate-fade 0.25s ease both;
+  overflow-y: auto;
 }
 
-.cancel-button {
+.donate-modal {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  overflow-y: auto;
+  margin: auto;
+  padding: 2.4rem 2.2rem 2rem;
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(circle at 88% -10%, rgba(184, 213, 138, 0.28), transparent 14rem),
+    #ffffff;
+  box-shadow: 0 2rem 4.5rem rgba(0, 0, 0, 0.4);
+  text-align: center;
+  animation: donate-pop 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.donate-close {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 0.9rem;
+  right: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
   border: none;
-  background: transparent;
+  border-radius: 50%;
+  background: rgba(31, 84, 47, 0.08);
+  color: #1f542f;
   cursor: pointer;
-  color: #ff4d4f;
-  transition: transform 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.cancel-button:hover {
-  transform: scale(1.2);
+.donate-close:hover {
+  background: rgba(31, 84, 47, 0.16);
+  transform: scale(1.08);
+}
+
+.donate-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.9rem;
+  color: #1f542f;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.donate-kicker::before {
+  content: "";
+  width: 1.8rem;
+  height: 2px;
+  background: #b8d58a;
 }
 
 .donate-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #333;
+  margin: 0 0 0.6rem;
+  color: #183126;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
 .donate-subtitle {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 2rem;
+  margin: 0 0 1.8rem;
+  color: #64746a;
+  font-size: 0.95rem;
+  line-height: 1.7;
 }
 
-.donate-section {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  background-color: #f3f4f6;
-  border-radius: 12px;
-  transition: background 0.3s ease;
+.donate-methods {
+  display: grid;
+  gap: 1rem;
+  text-align: left;
 }
 
-.donate-section:hover {
-  background-color: #e0e7ff;
+.donate-card {
+  border: 1px solid rgba(31, 84, 47, 0.16);
+  border-radius: 0.9rem;
+  background: rgba(31, 84, 47, 0.04);
+  padding: 1.2rem 1.3rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.donate-section h3 {
-  font-size: 16px;
-  color: #111827;
-  margin-bottom: 5px;
+.donate-card:hover {
+  border-color: rgba(31, 84, 47, 0.35);
+  box-shadow: 0 0.6rem 1.4rem rgba(18, 59, 37, 0.1);
+}
+
+.donate-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.donate-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  flex: 0 0 auto;
+  border-radius: 0.7rem;
+  background: linear-gradient(135deg, #1f542f, #123b25);
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.donate-card-head h3 {
+  margin: 0;
+  color: #183126;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.donate-card-head small {
+  display: block;
+  color: #64746a;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.donate-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 0.6rem;
+  background: #ffffff;
+  border: 1px dashed rgba(31, 84, 47, 0.25);
+}
+
+.donate-field + .donate-field {
+  margin-top: 0.6rem;
+}
+
+.donate-field-label {
+  display: block;
+  color: #64746a;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.15rem;
 }
 
 .donate-code {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 18px;
-  color: #1e3a8a;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #123b25;
+  word-break: break-all;
 }
 
-@keyframes fadeIn {
+.donate-copy {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.8rem;
+  border: none;
+  border-radius: 0.55rem;
+  background: linear-gradient(135deg, #1f542f, #123b25);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.donate-copy:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0.4rem 0.9rem rgba(18, 59, 37, 0.3);
+}
+
+.donate-copy.copied {
+  background: linear-gradient(135deg, #2e7d43, #1f542f);
+}
+
+.donate-foot {
+  margin: 1.6rem 0 0;
+  color: #64746a;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.donate-foot strong {
+  color: #1f542f;
+}
+
+@keyframes donate-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes donate-pop {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(18px) scale(0.98);
   }
-
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 560px) {
+  .donate-modal {
+    padding: 2rem 1.3rem 1.6rem;
+  }
+
+  .donate-field {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .donate-copy {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .donate-overlay,
+  .donate-modal {
+    animation: none;
   }
 }

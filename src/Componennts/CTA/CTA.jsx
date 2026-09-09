@@ -6,7 +6,7 @@ const CTA = () => {
   const [show, setshow] = useState(false)
   return (
     <>
-    {show && <Donate/>}
+    {show && <Donate onClose={() => setshow(false)} />}
     <section className="cta">
       <div className="container">
         <div className="cta-content">

@@ -16,7 +16,7 @@ const Hero = () => {
   const [donate, setdonate] = useState(false);
   return (
     <>
-      {donate && <Donate />}
+      {donate && <Donate onClose={() => setdonate(false)} />}
       <section id="home" className="hero hero-advanced">
         {/* Crossfading photo backdrop */}
         <div className="hero-slideshow" aria-hidden="true">

@@ -1,3 +1,215 @@
+// import React, { useEffect, useState } from "react";
+// import "./picture.css";
+// import { useParams } from "react-router-dom";
+// import axios from "axios";
+// import toast from "react-hot-toast";
+// import { ClipLoader } from "react-spinners";
+// import ShareBar from "../../Componennts/Share/ShareBar";
+
+// const Picturepost = () => {
+//   const { id } = useParams();
+//   const [picture, setpicture] = useState({});
+//   const [loading, setloading] = useState(false);
+
+//   useEffect(() => {
+//     const fetchPicture = async () => {
+//       try {
+//         setloading(true);
+//         const picturein = await axios.get(
+//           `https://zozacbackend.onrender.com/admin/picture/post/${id}`
+//         );
+//         setpicture(picturein.data);
+//       } catch (error) {
+//         toast.error(error.message || "Failed to fetch picture");
+//       } finally {
+//         setloading(false);
+//       }
+//     };
+//     fetchPicture();
+//   }, [id]);
+
+//   // Canonical page URL — crawlers are served per-post OG tags (title,
+//   // description, image) for this URL via the /api/og-picture rewrite.
+//   const shareUrl = picture._id
+//     ? `https://www.zozac-community.org/picturepost/${picture._id}`
+//     : "";
+
+//   const shareTitle = picture.title || "ZOZAC Community";
+//   const shareDescription = picture.content
+//     ? `${String(picture.content).replace(/\s+/g, " ").trim().slice(0, 199).trim()}…`
+//     : "Stories, activities and impact moments from the ZOZAC Community.";
+//   const shareImage = picture.ImageUrl || "https://www.zozac-community.org/logo3.jpg";
+
+//   return (
+//     <div className="post-page">
+//       {loading && (
+//         <div className="post-loading">
+//           <ClipLoader size={46} color="#1f542f" />
+//         </div>
+//       )}
+
+//       {!loading && picture._id && (
+//         <article className="post-article">
+//           {/* Article header */}
+//           <header className="post-header">
+//             {picture.date && <p className="post-eyebrow">{picture.date}</p>}
+//             <h2 className="post-title">{picture.title}</h2>
+//           </header>
+
+//           {/* Featured image */}
+//           <figure className="post-media">
+//             <div className="post-badge">zozac</div>
+//             <img src={picture.ImageUrl} alt={picture.title || "Post"} />
+//           </figure>
+
+//           {/* Article body */}
+//           <div className="post-body">
+//             <p className="post-content">{picture.content}</p>
+
+//             {/* Share row: WhatsApp, Facebook, X, Telegram, LinkedIn, Email, copy link + native sheet */}
+//             {shareUrl && (
+//               <ShareBar
+//                 url={shareUrl}
+//                 title={shareTitle}
+//                 description={shareDescription}
+//                 image={shareImage}
+//                 label="Share this story"
+//               />
+//             )}
+
+//             {/* Tags */}
+//             <div className="post-tags">
+//               <span className="post-tag">innovating</span>
+//               <span className="post-tag">lives</span>
+//               <span className="post-tag">at ZOZAC</span>
+//             </div>
+
+//             {/* Price + Button - enable when the API sends a price */}
+//             {/* <div className="post-price-row">
+//               <span className="post-price">{picture.price} frs</span>
+//               <button className="post-buy">
+//                 <span>ZOZAC COMMUNITY</span>
+//                 <svg
+//                   className="post-buy-icon"
+//                   width="20"
+//                   height="20"
+//                   viewBox="0 0 24 24"
+//                   fill="none"
+//                   stroke="currentColor"
+//                   strokeWidth="2"
+//                   xmlns="http://www.w3.org/2000/svg"
+//                 >
+//                   <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4" />
+//                   <line x1="3" y1="6" x2="21" y2="6" />
+//                   <path d="M16 10a4 4 0 01-8 0" />
+//                 </svg>
+//               </button>
+//             </div> */}
+
+//             {/* Rating */}
+//             <div className="post-rating">
+//               <div className="post-stars">
+//                 {[...Array(5)].map((_, i) => (
+//                   <svg
+//                     key={i}
+//                     width="16"
+//                     height="16"
+//                     viewBox="0 0 24 24"
+//                     fill="#FFD700"
+//                     stroke="#FFD700"
+//                     strokeWidth="0.5"
+//                     xmlns="http://www.w3.org/2000/svg"
+//                     aria-hidden="true"
+//                   >
+//                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+//                   </svg>
+//                 ))}
+//               </div>
+//               <span className="post-reviews">245 Reviews</span>
+//             </div>
+//           </div>
+//         </article>
+//       )}
+
+//       {!loading && !picture._id && (
+//         <div className="post-empty">
+//           <h2>Post not found</h2>
+//           <p>This story may have been removed or is temporarily unavailable.</p>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Picturepost;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useEffect, useState } from "react";
 import "./picture.css";
 import { useParams } from "react-router-dom";
@@ -18,9 +230,19 @@ const Picturepost = () => {
         const picturein = await axios.get(
           `https://zozacbackend.onrender.com/admin/picture/post/${id}`
         );
-        setpicture(picturein.data);
+
+        const post = picturein.data;
+
+        // ✅ Only allow non-gallery posts
+        if (!post || post.category === "Gallery") {
+          setpicture({});
+          return;
+        }
+
+        setpicture(post);
       } catch (error) {
         toast.error(error.message || "Failed to fetch picture");
+        setpicture({});
       } finally {
         setloading(false);
       }
@@ -66,7 +288,7 @@ const Picturepost = () => {
           <div className="post-body">
             <p className="post-content">{picture.content}</p>
 
-            {/* Share row: WhatsApp, Facebook, X, Telegram, LinkedIn, Email, copy link + native sheet */}
+            {/* Share row */}
             {shareUrl && (
               <ShareBar
                 url={shareUrl}
@@ -83,28 +305,6 @@ const Picturepost = () => {
               <span className="post-tag">lives</span>
               <span className="post-tag">at ZOZAC</span>
             </div>
-
-            {/* Price + Button - enable when the API sends a price */}
-            {/* <div className="post-price-row">
-              <span className="post-price">{picture.price} frs</span>
-              <button className="post-buy">
-                <span>ZOZAC COMMUNITY</span>
-                <svg
-                  className="post-buy-icon"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4" />
-                  <line x1="3" y1="6" x2="21" y2="6" />
-                  <path d="M16 10a4 4 0 01-8 0" />
-                </svg>
-              </button>
-            </div> */}
 
             {/* Rating */}
             <div className="post-rating">

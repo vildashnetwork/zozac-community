@@ -41,7 +41,12 @@ const Samples = () => {
         const allpictures = await axios.get(
           "https://zozacbackend.onrender.com/admin/picture/post"
         );
-        setimagepost(allpictures.data);
+        // ✅ Fetch only non-gallery picture posts (case-insensitive, array-safe)
+        setimagepost(
+          (Array.isArray(allpictures.data) ? allpictures.data : []).filter(
+            (p) => String(p?.category || "").trim().toLowerCase() !== "gallery"
+          )
+        );
       } catch (error) {
         toast.error(error.message);
       } finally {
@@ -55,7 +60,12 @@ const Samples = () => {
         const allvideos = await axios.get(
           "https://zozacbackend.onrender.com/admin/video/post"
         );
-        setvideopost(allvideos.data);
+        // ✅ Fetch only non-gallery video posts (case-insensitive, array-safe)
+        setvideopost(
+          (Array.isArray(allvideos.data) ? allvideos.data : []).filter(
+            (v) => String(v?.category || "").trim().toLowerCase() !== "gallery"
+          )
+        );
       } catch (error) {
         toast.error(error.message);
       } finally {
@@ -67,7 +77,9 @@ const Samples = () => {
     fetchpictures();
   }, []);
 
-  const [more, setloadmore] = useState(false);
+  // separate load-more state for picture and video sections
+  const [morePics, setMorePics] = useState(false);
+  const [moreVids, setMoreVids] = useState(false);
 
   return (
     <>
@@ -85,7 +97,7 @@ const Samples = () => {
 
           <div className="samples-grid">
             {loading && <BarLoader />}
-            {!more
+            {!morePics
               ? imagepost.slice(0, 5).map((item, index) => (
                   <div className="sample-card" key={index}>
                     <div className="sample-image">
@@ -152,14 +164,31 @@ const Samples = () => {
                 ))}
           </div>
         </div>
+        {/* Picture Load More Button */}
+        <button
+          style={{
+            background: "green",
+            color: "white",
+            border: "none",
+            borderRadius: "8px",
+            padding: "12px 20px",
+            fontSize: "16px",
+            fontWeight: "600",
+            cursor: "pointer",
+            transition: "all 0.3s ease",
+            boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
+            marginTop: "20px",
+          }}
+          onClick={() => setMorePics(!morePics)}
+        >
+          {morePics ? "Show Less Pictures" : "Load More Pictures"}
+        </button>
       </section>
-
-      {/* Video Post */}
       <section id="samples" className="samples">
         <div className="container">
           <div className="samples-grid">
             {loading && <BarLoader />}
-            {!more
+            {!moreVids
               ? videopost.slice(0, 5).map((item, index) => (
                   <div className="sample-card" key={index}>
                     <div>
@@ -185,19 +214,24 @@ const Samples = () => {
 
                         {item.content.length > 70 && (
                           <span
-                            style={{ cursor: "pointer", color: "#333" }}
+                            style={{
+                              cursor: "pointer",
+                              color: "#1f542f",
+                              fontWeight: 600,
+                              fontStyle: "italic",
+                            }}
                             onClick={() => toggleVideo(index)}
                           >
                             {expandedVideos[index]
                               ? " ..show less"
-                              : " ..read more"}
+                              : " ..watch more"}
                           </span>
                         )}
                       </p>
 
                       <Link to={`/posts/${item._id}`}>
                         <span className="btn-text">
-                          Read More <i className="fas fa-arrow-right"></i>
+                          Watch Now <i className="fas fa-play-circle"></i>
                         </span>
                       </Link>
                     </div>
@@ -228,19 +262,24 @@ const Samples = () => {
 
                         {item.content.length > 70 && (
                           <span
-                            style={{ cursor: "pointer", color: "#333" }}
+                            style={{
+                              cursor: "pointer",
+                              color: "#1f542f",
+                              fontWeight: 600,
+                              fontStyle: "italic",
+                            }}
                             onClick={() => toggleVideo(index)}
                           >
                             {expandedVideos[index]
                               ? " ..show less"
-                              : " ..read more"}
+                              : " ..watch more"}
                           </span>
                         )}
                       </p>
 
                       <Link to={`/posts/${item._id}`}>
                         <span className="btn-text">
-                          Read More <i className="fas fa-arrow-right"></i>
+                          Watch Now <i className="fas fa-play-circle"></i>
                         </span>
                       </Link>
                     </div>
@@ -249,12 +288,10 @@ const Samples = () => {
           </div>
         </div>
 
-        {/* Load More Button */}
+        {/* Video Load More Button */}
         <button
           style={{
-            background: more
-              ? "green"
-              : "green",
+            background: "green",
             color: "white",
             border: "none",
             borderRadius: "8px",
@@ -266,9 +303,9 @@ const Samples = () => {
             boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
             marginTop: "20px",
           }}
-          onClick={() => setloadmore(!more)}
+          onClick={() => setMoreVids(!moreVids)}
         >
-          {more ? "Show Less" : "Load More"}
+          {moreVids ? "Show Less Videos" : "Load More Videos"}
         </button>
       </section>
     </>

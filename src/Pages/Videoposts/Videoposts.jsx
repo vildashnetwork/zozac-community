@@ -18,9 +18,19 @@ const VideoHero = () => {
         const response = await axios.get(
           `https://zozacbackend.onrender.com/admin/video/post/${id}`
         );
-        setVideo(response.data);
-      } catch (error) {
+
+        const post = response.data;
+
+        // ✅ Only allow non-gallery posts (case-insensitive)
+        if (!post || String(post.category || "").trim().toLowerCase() === "gallery") {
+          setVideo(null);
+          return;
+        }
+
+        setVideo(post);
+      } catch {
         toast.error("Failed to load video");
+        setVideo(null);
       } finally {
         setLoading(false);
       }

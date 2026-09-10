@@ -233,8 +233,8 @@ const Picturepost = () => {
 
         const post = picturein.data;
 
-        // ✅ Only allow non-gallery posts
-        if (!post || post.category === "Gallery") {
+        // ✅ Only allow non-gallery posts (case-insensitive)
+        if (!post || String(post.category || "").trim().toLowerCase() === "gallery") {
           setpicture({});
           return;
         }
